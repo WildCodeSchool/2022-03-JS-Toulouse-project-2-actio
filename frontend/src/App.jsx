@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Map from "./pages/Map";
-
 import "./App.css";
 
 function App() {
