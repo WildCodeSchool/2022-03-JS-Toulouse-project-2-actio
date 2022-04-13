@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import axios from "axios";
 import FilterMenu from "../components/FilterMenu";
 import Icon from "../components/Icon";
 import "./Map.css";
 
 function Map() {
+  const [sportSelected, setSportSelected] = useState([]);
+
+  const getLocation = () => {
+    axios
+      .get(
+        "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=patinoires&q="
+      )
+      .then((response) => setSportSelected(response.data.records));
+  };
+
   return (
     <div className="Map">
+      <button type="button" onClick={getLocation}>
+        Get location from the API
+      </button>
       <FilterMenu />
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
         {/* Add the className map-tiles to style the map in dark */}
@@ -22,6 +36,19 @@ function Map() {
             Bougez avec Actio ! <br /> <Link to="/">Home</Link>
           </Popup>
         </Marker>
+        {/* Once we get the different locations from the API display marker on the map */}
+        {sportSelected.map((location) => (
+          <Marker
+            key={location.recordid}
+            position={location.fields.geo_point_2d}
+            icon={Icon}
+          >
+            <Popup>
+              {location.fields.telephone} | {location.fields.nom_complet} |{" "}
+              {location.fields.adresse}
+            </Popup>
+          </Marker>
+        ))}
       </MapContainer>
     </div>
   );
