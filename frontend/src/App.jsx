@@ -10,6 +10,7 @@ import Quiz from "./pages/Quiz";
 import QuizResult from "./pages/QuizResult";
 import Infos from "./pages/Infos";
 import "./App.css";
+import Navbar from "./pages/Navbar";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/QuizResult" element={<QuizResult />} />
           <Route path="/Infos" element={<Infos />} />
         </Routes>
+        <Navbar />
       </div>
     </Router>
   );
