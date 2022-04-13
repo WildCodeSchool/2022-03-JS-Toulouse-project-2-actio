@@ -22,6 +22,7 @@ function Map() {
       <button type="button" onClick={getLocation}>
         Get location from the API
       </button>
+      <Link to="/Quiz">Quiz</Link>
       <FilterMenu />
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
         {/* Add the className map-tiles to style the map in dark */}
@@ -50,6 +51,7 @@ function Map() {
           </Marker>
         ))}
       </MapContainer>
+      <Link to="/Quiz">Quiz</Link>
     </div>
   );
 }
