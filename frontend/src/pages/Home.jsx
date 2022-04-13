@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 
 export default function Home() {
   return (
     <header className="App-header">
+      <Link to="/Quiz">Quiz</Link>
+      <Link to="/Map">Map</Link>
       <img src={logo} className="App-logo" alt="logo" />
       <p>Hello Vite + React !</p>
       <p>
