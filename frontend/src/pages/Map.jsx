@@ -8,15 +8,89 @@ import "./Map.css";
 
 function Map() {
   const [sportSelected, setSportSelected] = useState("");
-  console.log(sportSelected);
   const [sportLocations, setSportLocations] = useState([]);
 
   const getLocation = () => {
-    axios
-      .get(
-        "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=patinoires&q="
-      )
-      .then((response) => setSportLocations(response.data.records));
+    switch (sportSelected) {
+      case "tennis":
+        axios
+          .get(
+            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=courts-de-tennis&q=&rows=50"
+          )
+          .then((response) => setSportLocations(response.data.records));
+        break;
+      case "patinage":
+        axios
+          .get(
+            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=patinoires&q="
+          )
+          .then((response) => setSportLocations(response.data.records));
+        break;
+      case "skate":
+        axios
+          .get(
+            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=skate-parcs&q="
+          )
+          .then((response) => setSportLocations(response.data.records));
+        break;
+      case "natation":
+        axios
+          .get(
+            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=piscines&q=&rows=20"
+          )
+          .then((response) => setSportLocations(response.data.records));
+        break;
+      case "petanque":
+        axios
+          .get(
+            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=boulodromes&q=&rows=100"
+          )
+          .then((response) => setSportLocations(response.data.records));
+        break;
+      case "fitness":
+        axios
+          .get(
+            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=site-communal-dimplantation-de-fitness&q=&rows=50"
+          )
+          .then((response) => setSportLocations(response.data.records));
+        break;
+      case "football":
+        axios
+          .get(
+            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=stades&q=&rows=50"
+          )
+          .then((response) =>
+            setSportLocations(
+              response.data.records.filter(
+                (location) => location.fields.foot === "O"
+              )
+            )
+          );
+        break;
+      case "rugby":
+        axios
+          .get(
+            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=stades&q=&rows=50"
+          )
+          .then((response) =>
+            setSportLocations(
+              response.data.records.filter(
+                (location) => location.fields.rugby === "O"
+              )
+            )
+          );
+        break;
+      case "volley-ball":
+      case "handball":
+        axios
+          .get(
+            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=gymnases&q=&rows=50"
+          )
+          .then((response) => setSportLocations(response.data.records));
+        break;
+      default:
+        console.log("Sorry no sport selected");
+    }
   };
 
   return (
