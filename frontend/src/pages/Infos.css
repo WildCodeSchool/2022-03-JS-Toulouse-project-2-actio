@@ -7,56 +7,58 @@ body {
 }
 
 .location-name {
-  color: white;
+  color: #FFC857;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.name {
+  display: flex;
+  margin : 21.440px 0 0 0;
+}
+
+.description {
+  display: flex;
+  margin : 0 0 21.44px 0;
+}
+
 .location-infos {
-  border: red solid 1rem;
-  margin: 0 3rem 0 2rem;
-  color: white;
+  margin: 0 2rem 0 2rem;
+  color: #FFC857;
   display: flex;
   flex-direction: column;
 }
 
 .location-details {
   display: flex;
+  text-align: initial;
   align-items: center;
   gap: 1rem;
 }
 
 .phone-details {
-  
   /*margin: 0 2rem 0 2rem;*/
-  color: white;
+  color: #FFC857;
   display: flex;
-  gap: 1rem
+  gap: 1rem;
 }
 
-/*.phone-icone {
-  margin: 0 2rem 0 2rem
-}*/
-
 .web-icone {
-  color: white;
+  color: #FFC857;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.exit-acess {
-  color: white;
-  display: flex;
-  justify-content: space-between;
-}
-
 .map {
-  color: white;
+  color: #FFC857;
 }
 
 .exit-acess {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   text-decoration: none;
-  color: white;
+  color: #FFC857;
 }

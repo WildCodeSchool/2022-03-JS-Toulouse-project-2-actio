@@ -18,10 +18,10 @@ function Infos() {
       />
 
       <div className="location-name">
-        <h1>
+        <h1 className="name">
           <strong>{props.locationName}</strong>
         </h1>
-        <p>description</p>
+        <p className="description">Infrastructures de sports et loisirs</p>
       </div>
 
       <div className="location-infos">
@@ -53,8 +53,7 @@ function Infos() {
       </div>
 
       <div className="map">
-        <p>géolocalisation</p>
-        <div>carte</div>
+        <div>[carte]</div>
       </div>
 
       <div className="exit-acess">
