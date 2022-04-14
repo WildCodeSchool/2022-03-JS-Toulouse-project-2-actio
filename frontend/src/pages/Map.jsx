@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import axios from "axios";
@@ -89,15 +89,17 @@ function Map() {
           .then((response) => setSportLocations(response.data.records));
         break;
       default:
-        console.log("Sorry no sport selected");
+        setSportLocations([]);
+        break;
     }
   };
 
+  useEffect(() => {
+    getLocation();
+  }, [sportSelected]);
+
   return (
     <div className="Map">
-      <button type="button" onClick={getLocation}>
-        Get location from the API
-      </button>
       <FilterMenu setSportSelected={setSportSelected} />
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
         {/* Add the className map-tiles to style the map in dark */}
