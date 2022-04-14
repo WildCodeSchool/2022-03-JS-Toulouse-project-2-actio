@@ -1,5 +1,6 @@
 import React from "react";
 import "./Infos.css";
+import { MapContainer, TileLayer } from "react-leaflet";
 
 function Infos() {
   const props = {
@@ -53,7 +54,13 @@ function Infos() {
       </div>
 
       <div className="map">
-        <div>[carte]</div>
+        <MapContainer center={[43.604652, 1.444209]} zoom={13}>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            className="map-tiles"
+          />
+        </MapContainer>
       </div>
 
       <div className="exit-acess">

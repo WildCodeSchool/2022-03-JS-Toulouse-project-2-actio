@@ -7,25 +7,29 @@ body {
 }
 
 .location-name {
-  color: #FFC857;
+  margin: 0 2rem 0 2rem;
+  color: #ffc857;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .name {
+  font-size: 1.8rem;
   display: flex;
-  margin : 21.440px 0 0 0;
+  margin: 10.44px 0 0 0;
 }
 
 .description {
   display: flex;
-  margin : 0 0 21.44px 0;
+  margin: 0 0 2.5rem 0;
 }
 
 .location-infos {
+  /*border : red solid 0.2rem; */
+  font-size: 0.8em;
   margin: 0 2rem 0 2rem;
-  color: #FFC857;
+  color: #ffc857;
   display: flex;
   flex-direction: column;
 }
@@ -38,21 +42,21 @@ body {
 }
 
 .phone-details {
-  /*margin: 0 2rem 0 2rem;*/
-  color: #FFC857;
+  color: #ffc857;
   display: flex;
   gap: 1rem;
 }
 
 .web-icone {
-  color: #FFC857;
+  color: #ffc857;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.map {
-  color: #FFC857;
+.leaflet-container {
+  margin: 2rem 2rem 2rem 2rem;
+  height: 140px;
 }
 
 .exit-acess {
@@ -60,5 +64,5 @@ body {
   align-items: center;
   justify-content: space-around;
   text-decoration: none;
-  color: #FFC857;
+  color: #ffc857;
 }
