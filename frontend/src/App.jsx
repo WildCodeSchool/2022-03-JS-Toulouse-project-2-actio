@@ -10,7 +10,7 @@ import Quiz from "./pages/Quiz";
 import QuizResult from "./pages/QuizResult";
 import Infos from "./pages/Infos";
 import "./App.css";
-import Navbar from "./pages/Navbar";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
