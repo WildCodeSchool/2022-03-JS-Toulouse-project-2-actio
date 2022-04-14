@@ -29,25 +29,39 @@ const sports = [
     label: "Tennis",
     value: "tennis",
   },
+  {
+    label: "Patinage",
+    value: "patinage",
+  },
+  {
+    label: "Skate",
+    value: "skate",
+  },
+  {
+    label: "Natation",
+    value: "natation",
+  },
 ];
 
-function FilterMenu() {
-  // THE FOLLOWING IS TO HANDLE THE SPORT SELECTED
-  // const [sportSelected, setSportSelected] = useState("");
+function FilterMenu(props) {
+  const { setSportSelected } = props;
 
-  // const handleChange = (e) => {
-  //   setSportSelected(e.target.value);
-  // };
+  const handleChange = (e) => {
+    setSportSelected(e.target.value);
+  };
 
   return (
     <div className="FilterMenu">
-      <select name="sports" id="sports-select">
+      <select name="sports" id="sports-select" onChange={handleChange}>
         <option value="">-- Choisis ton activité --</option>
-        {sports.map((sport) => (
-          <option key={sport.value} value={sport.value}>
-            {sport.label}
-          </option>
-        ))}
+        {/* Add a sort in order to sort the sports alphabetically */}
+        {sports
+          .sort((a, b) => a.label.localeCompare(b.label))
+          .map((sport) => (
+            <option key={sport.value} value={sport.value}>
+              {sport.label}
+            </option>
+          ))}
       </select>
     </div>
   );
