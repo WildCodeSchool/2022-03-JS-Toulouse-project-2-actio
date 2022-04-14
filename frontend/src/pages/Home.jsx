@@ -1,32 +1,21 @@
-import logo from "../assets/logo.svg";
+import React from "react";
+import "./Home.css";
+import { NavLink } from "react-router-dom";
 
 export default function Home() {
   return (
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>Hello Vite + React !</p>
-      <p>
-        Edit <code>App.jsx</code>.
-      </p>
-      <p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        {" | "}
-        <a
-          className="App-link"
-          href="https://vitejs.dev/guide/features.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Vite Docs
-        </a>
-      </p>
-    </header>
+    <body className="home">
+      <h1 className="home__text">
+        Tu veux faire du sport, mais tu ne sais pas lequel ? Réponds au quiz !
+      </h1>
+      <div className="home__buttons">
+        <NavLink className="home__link home__link--quiz" to="/quiz">
+          Quiz
+        </NavLink>
+        <NavLink className="home__link home__link--map" to="/map">
+          Accéder à la carte
+        </NavLink>
+      </div>
+    </body>
   );
 }

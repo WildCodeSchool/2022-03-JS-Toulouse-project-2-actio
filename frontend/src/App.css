@@ -15,6 +15,9 @@ code {
 .App {
   text-align: center;
 }
+.App__dev-nav {
+  background-color: white;
+}
 
 .App-logo {
   height: 40vmin;

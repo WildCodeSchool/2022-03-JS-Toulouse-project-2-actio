@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+body.home {
+  background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("https://images.unsplash.com/photo-1602263515015-dd72f8e9f301?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80");
+  background-size: cover;
+  background-position: center;
+  height:100vh;
+}
+
+.home__welcome {
+  padding-top: 15vh;
+}
+
+
+.home__text {
+  color: #ffc857;
+  font-size: 2.5rem;
+  padding-top: 15vh;
+  margin: 2rem;
+  font-family: nunito;
+  font-weight: bold;
+}
+
+.home__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32vh;
+}
+
+.home__link--quiz {
+  background-color: #ffc857;
+  color: black;
+  text-decoration: none;
+  font-family: nunito;
+  font-weight: bold;
+  font-size: 1.5rem;
+  width: 10rem;
+  padding: .5rem;
+  border-radius: 100px;
+  margin: 1rem;
+}
+
+.home__link--map {
+  color: #ffc857;
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin: .5rem;
+  font-family: nunito;
+}
