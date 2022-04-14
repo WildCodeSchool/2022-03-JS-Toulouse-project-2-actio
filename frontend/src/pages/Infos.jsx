@@ -2,12 +2,12 @@ import React from "react";
 import "./Infos.css";
 
 function Infos() {
-  /* const sportLocation = {
-    locationName: "",
-    address: "",
-    phone: "",
-    location: "", 
-  }; */
+  const props = {
+    locationName: "PATINOIRE BELLEVUE",
+    address: "69ter route de Narbonne 31000 TOULOUSE",
+    phone: "05 61 52 93 53",
+    location: "",
+  };
 
   return (
     <div className="Infos">
@@ -19,42 +19,41 @@ function Infos() {
 
       <div className="location-name">
         <h1>
-          <strong>location name</strong>
+          <strong>{props.locationName}</strong>
         </h1>
         <p>description</p>
       </div>
 
-      <div>
-        <div className="location-infos">
+      <div className="location-infos">
+        <div className="location-details">
           <img
-            src="/src/assets/location icone.png"
+            src="/src/assets/location icone.svg"
             alt="icone de localisation"
-            className="location-icone"
           />
-          <h2>address</h2>
+          <p>{props.address}</p>
         </div>
 
-        <div>
+        <div className="phone-details">
           <img
-            src="/src/assets/picto phone.jpeg"
+            src="/src/assets/phone icone.svg"
             alt="icone de téléphone"
-            className="address-icone"
-          />
-          <h2>phone</h2>
-        </div>
-
-        <div>
-          <img
-            src="/src/assets/web icone.png"
-            alt="icone de web"
             className="phone-icone"
           />
-          <h2>email</h2>
+          <p>{props.phone}</p>
+        </div>
+
+        <div className="fas web-icone fa-xs">
+          <img
+            src="/src/assets/web icone.svg"
+            alt="icone de web"
+            className="web-icone"
+          />
+          <p>non disponible</p>
         </div>
       </div>
 
-      <div>
-        <h2>géolocalisation</h2>
+      <div className="map">
+        <p>géolocalisation</p>
         <div>carte</div>
       </div>
 

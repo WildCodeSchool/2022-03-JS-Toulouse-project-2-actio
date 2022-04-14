@@ -1,25 +1,62 @@
-/* body {
+body {
   background-color: black;
-} */
+}
 
 .chosenSport-picture {
   width: 100%;
 }
 
 .location-name {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .location-infos {
+  border: red solid 1rem;
+  margin: 0 3rem 0 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.location-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.phone-details {
+  
+  /*margin: 0 2rem 0 2rem;*/
+  color: white;
+  display: flex;
+  gap: 1rem
+}
+
+/*.phone-icone {
+  margin: 0 2rem 0 2rem
+}*/
+
+.web-icone {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .exit-acess {
+  color: white;
+  display: flex;
+  justify-content: space-between;
 }
 
-.location-icone {
+.map {
+  color: white;
 }
 
-.address-icone {
-}
-
-.phone-icone {
+.exit-acess {
+  text-decoration: none;
+  color: white;
 }
