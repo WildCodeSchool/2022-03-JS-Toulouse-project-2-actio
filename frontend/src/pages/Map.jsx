@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import axios from "axios";
 import FilterMenu from "../components/FilterMenu";
@@ -89,15 +88,19 @@ function Map() {
           .then((response) => setSportLocations(response.data.records));
         break;
       default:
-        console.log("Sorry no sport selected");
+        setSportLocations([
+          { fields: { geo_point_2d: [43.604652, 1.444209] }, recordid: "1" },
+        ]);
+        break;
     }
   };
 
+  useEffect(() => {
+    getLocation();
+  }, [sportSelected]);
+
   return (
     <div className="Map">
-      <button type="button" onClick={getLocation}>
-        Get location from the API
-      </button>
       <FilterMenu setSportSelected={setSportSelected} />
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
         {/* Add the className map-tiles to style the map in dark */}
@@ -106,12 +109,6 @@ function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           className="map-tiles"
         />
-        {/* By default, add a marker on the map centered on Toulouse lat & long with a popup redirecting to the homepage */}
-        <Marker position={[43.604652, 1.444209]} icon={Icon}>
-          <Popup>
-            Bougez avec Actio ! <br /> <Link to="/">Home</Link>
-          </Popup>
-        </Marker>
         {/* Once we get the different locations from the API display marker on the map */}
         {sportLocations.map((location) => (
           <Marker
