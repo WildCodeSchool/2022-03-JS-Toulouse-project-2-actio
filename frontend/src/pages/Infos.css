@@ -1,12 +1,12 @@
-body {
+.Infos {
   background-color: black;
 }
 
-.chosenSport-picture {
+.Infos .chosenSport-picture {
   width: 100%;
 }
 
-.location-name {
+.Infos .location-name {
   margin: 0 2rem;
   color: #ffc857;
   display: flex;
@@ -14,18 +14,18 @@ body {
   align-items: center;
 }
 
-.name {
+.Infos .name {
   font-size: 1.8rem;
   display: flex;
   margin-top: 0.6rem 0 0 0;
 }
 
-.description {
+.Infos .description {
   display: flex;
   margin: 0 0 2.5rem 0;
 }
 
-.location-infos {
+.Infos .location-infos {
   font-size: 0.8em;
   margin: 0 2rem;
   color: #ffc857;
@@ -33,32 +33,32 @@ body {
   flex-direction: column;
 }
 
-.location-details {
+.Infos .location-details {
   display: flex;
   text-align: initial;
   align-items: center;
   gap: 1rem;
 }
 
-.phone-details {
+.Infos .phone-details {
   color: #ffc857;
   display: flex;
   gap: 1rem;
 }
 
-.web-icone {
+.Infos .web-icone {
   color: #ffc857;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.leaflet-container {
+.Infos .leaflet-container {
   margin: 2rem;
   height: 140px;
 }
 
-.exit-acess {
+.Infos .exit-acess {
   display: flex;
   align-items: center;
   justify-content: space-around;
