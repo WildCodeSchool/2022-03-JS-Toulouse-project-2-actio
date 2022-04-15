@@ -74,7 +74,7 @@ function Quiz() {
       <div className="score">
         {showScore ? (
           <h2 className="score-section">
-            L activité que vous nous proposons est : ... la pétanque !!!
+            L&apos;activité que vous nous proposons est : ... la pétanque !!!
           </h2>
         ) : (
           <div />
