@@ -7,7 +7,7 @@ body {
 }
 
 .location-name {
-  margin: 0 2rem 0 2rem;
+  margin: 0 2rem;
   color: #ffc857;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@ body {
 .name {
   font-size: 1.8rem;
   display: flex;
-  margin: 10.44px 0 0 0;
+  margin-top: 0.6rem 0 0 0;
 }
 
 .description {
@@ -26,9 +26,8 @@ body {
 }
 
 .location-infos {
-  /*border : red solid 0.2rem; */
   font-size: 0.8em;
-  margin: 0 2rem 0 2rem;
+  margin: 0 2rem;
   color: #ffc857;
   display: flex;
   flex-direction: column;
@@ -55,7 +54,7 @@ body {
 }
 
 .leaflet-container {
-  margin: 2rem 2rem 2rem 2rem;
+  margin: 2rem;
   height: 140px;
 }
 
