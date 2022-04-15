@@ -1,0 +1,67 @@
+body {
+  background-color: black;
+}
+
+.chosenSport-picture {
+  width: 100%;
+}
+
+.location-name {
+  margin: 0 2rem;
+  color: #ffc857;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name {
+  font-size: 1.8rem;
+  display: flex;
+  margin-top: 0.6rem 0 0 0;
+}
+
+.description {
+  display: flex;
+  margin: 0 0 2.5rem 0;
+}
+
+.location-infos {
+  font-size: 0.8em;
+  margin: 0 2rem;
+  color: #ffc857;
+  display: flex;
+  flex-direction: column;
+}
+
+.location-details {
+  display: flex;
+  text-align: initial;
+  align-items: center;
+  gap: 1rem;
+}
+
+.phone-details {
+  color: #ffc857;
+  display: flex;
+  gap: 1rem;
+}
+
+.web-icone {
+  color: #ffc857;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.leaflet-container {
+  margin: 2rem;
+  height: 140px;
+}
+
+.exit-acess {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-decoration: none;
+  color: #ffc857;
+}
