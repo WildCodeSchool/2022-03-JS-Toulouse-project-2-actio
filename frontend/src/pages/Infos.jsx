@@ -28,7 +28,7 @@ function Infos() {
       <div className="location-infos">
         <div className="location-details">
           <img
-            src="/src/assets/location icone.svg"
+            src="/src/assets/location-icone.svg"
             alt="icone de localisation"
           />
           <p>{props.address}</p>
@@ -36,7 +36,7 @@ function Infos() {
 
         <div className="phone-details">
           <img
-            src="/src/assets/phone icone.svg"
+            src="/src/assets/phone-icone.svg"
             alt="icone de téléphone"
             className="phone-icone"
           />
@@ -45,7 +45,7 @@ function Infos() {
 
         <div className="fas web-icone fa-xs">
           <img
-            src="/src/assets/web icone.svg"
+            src="/src/assets/web-icone.svg"
             alt="icone de web"
             className="web-icone"
           />
