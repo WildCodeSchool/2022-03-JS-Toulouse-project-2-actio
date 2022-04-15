@@ -5,11 +5,11 @@
 }
 
 /* Style the class map-tiles wwith a filter set to the variable map-tiles-filter */
-.map-tiles {
+.map .map-tiles {
   filter: var(--map-tiles-filter, none);
 }
 
 /* Set the height of the map container to be able to display the map */
-.leaflet-container {
+.map .leaflet-container {
   height: 100vh;
 }
