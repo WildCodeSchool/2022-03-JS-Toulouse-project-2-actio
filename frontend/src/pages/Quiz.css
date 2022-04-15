@@ -1,0 +1,16 @@
+.quiz-container {
+  display: flex;
+  background-color: #1a1a1d;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.quiz-container > h2 {
+  color: #ffc857;
+}
+.score {
+  color: #ffc857;
+}
+button:hover
+{
+  background-color: #ffc857;
+}
