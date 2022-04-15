@@ -16,7 +16,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav>
+        <nav className="App__dev-nav">
           <ul>
             <li>
               <NavLink to="/">Home</NavLink>
