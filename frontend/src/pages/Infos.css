@@ -1,9 +1,23 @@
+body,
+html,
+#root,
+.App {
+  height: 100%;
+}
+
 .Infos {
-  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #1a1a1d;
+  font-family: nunito;
+  height: 100%;
 }
 
 .Infos .chosenSport-picture {
-  width: 100%;
+  background-image: url("/src/assets/patinoire.jpeg");
+  background-size: cover;
+  height: 100%;
 }
 
 .Infos .location-name {
@@ -58,10 +72,62 @@
   height: 140px;
 }
 
-.Infos .exit-acess {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  text-decoration: none;
-  color: #ffc857;
+/*----------- media queries desktop ------------ */
+
+@media screen and (min-width: 740px) {
+  .Infos {
+    background-color: #1a1a1d;
+    font-family: nunito;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+
+  .Infos .chosenSport-picture {
+    display: flex;
+    width: 50%;
+    height: 100%;
+  }
+
+  .Infos .desktop-right {
+    background-color: #1a1a1d;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+  }
+
+  .Infos .location-infos {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+
+  .Infos .location-name {
+    margin: 0 2rem;
+    color: #ffc857;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+
+  .Infos .name {
+    font-size: 3rem;
+  }
+
+  .Infos .map {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 6rem 0;
+  }
+
+  .Infos .leaflet-container {
+    display: flex;
+    margin: 2rem;
+    width: 60%;
+    height: 20vh;
+  }
 }
