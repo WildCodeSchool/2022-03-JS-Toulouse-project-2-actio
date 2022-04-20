@@ -1,5 +1,4 @@
 import React from "react";
-// import Select from "react-select";
 import "./FilterMenu.css";
 
 const sports = [
@@ -45,25 +44,6 @@ const sports = [
   },
 ];
 
-// const style = {
-//   control: (styles) => ({
-//     ...styles,
-//     backgroundColor: "#FFC857",
-//     opacity: "0.8",
-//     position: "relative",
-//     left: "30%",
-//     width: "40%",
-//     boderColor: "#FFC857",
-//   }),
-//   option: (styles) => ({
-//     ...styles,
-//     backgroundColor: "#FFC857",
-//     width: "40%",
-//     position: "relative",
-//     left: "30%",
-//   }),
-// };
-
 function FilterMenu(props) {
   const { setSportSelected } = props;
 
@@ -73,7 +53,6 @@ function FilterMenu(props) {
 
   return (
     <div className="FilterMenu">
-      {/* <Select options={sports} isSearchable styles={style} /> */}
       <select name="sports" className="sports-select" onChange={handleChange}>
         <option value="">-- Choisis ton activité --</option>
         {/* Add a sort in order to sort the sports alphabetically */}
