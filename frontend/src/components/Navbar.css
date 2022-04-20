@@ -10,9 +10,10 @@ body {
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-  background-color: #FBFBFB;
+  background-color: #fbfbfb;
   display: flex;
   overflow-x: auto;
+  z-index: 1000000;
 }
 
 .nav__link {
@@ -33,5 +34,5 @@ body {
 }
 
 .nav__link:hover {
-  background-color: #FFC857;
+  background-color: #ffc857;
 }
