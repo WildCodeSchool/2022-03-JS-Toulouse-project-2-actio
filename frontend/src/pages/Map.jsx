@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import axios from "axios";
+import LocationMarker from "../components/LocationMarker";
 import FilterMenu from "../components/FilterMenu";
 import Icon from "../components/Icon";
 import "./Map.css";
@@ -122,6 +123,7 @@ function Map() {
             </Popup>
           </Marker>
         ))}
+        <LocationMarker />
       </MapContainer>
     </div>
   );
