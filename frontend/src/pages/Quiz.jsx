@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Quiz.css";
+import { NavLink } from "react-router-dom";
 
 function Quiz() {
   const questions = [
@@ -42,19 +43,14 @@ function Quiz() {
   ];
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [showScore, setShowScore] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const handleAnswerButtonClick = (answerOption) => {
     const nextQuestion = currentQuestion + 1;
     setCurrentQuestion(nextQuestion);
+    setScore(questions[currentQuestion].answerOptions.score);
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
-      setScore(
-        score +
-          questions[currentQuestion].answerOptions[answerOption.answerText]
-            .score
-      );
     } else {
-      setShowScore(true);
       setCurrentQuestion(3);
     }
   };
@@ -69,17 +65,13 @@ function Quiz() {
           </button>
         ))}
       </div>
-      <div>{score}</div>
+      <div className="show-score">Votre score est : {score}</div>
 
-      <div className="score">
-        {showScore ? (
-          <h2 className="score-section">
-            L&apos;activité que vous nous proposons est : ... la pétanque !!!
-          </h2>
-        ) : (
-          <div />
-        )}
-      </div>
+      <button type="button" className="quiz-result-button">
+        <NavLink className="quiz-result-link" to="/QuizResult">
+          Voir les activités proposées
+        </NavLink>
+      </button>
     </div>
   );
 }
