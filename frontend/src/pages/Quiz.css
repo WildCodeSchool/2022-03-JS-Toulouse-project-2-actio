@@ -3,6 +3,8 @@
   background-color: #1a1a1d;
   flex-direction: column;
   flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
 }
 
 .quiz-container > h2 {
@@ -15,4 +17,19 @@
 
 button:hover {
   background-color: #ffc857;
+}
+
+.score-section {
+  color: #ffc857;
+}
+
+.show-score {
+  color: #ffc857;
+}
+
+.quiz-result-button {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  max-width: 320px;
 }
