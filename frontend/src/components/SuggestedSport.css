@@ -1,0 +1,21 @@
+.SuggestedSport {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  color: #1a1a1d;
+  border: 1px solid #1a1a1d;
+  border-radius: 10px;
+  margin: 0 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background-color: #fbfbfb;
+}
+
+@media screen and (min-width: 768px) {
+  .SuggestedSport {
+    margin: 0;
+    width: 45%;
+    height: 150px;
+  }
+}
