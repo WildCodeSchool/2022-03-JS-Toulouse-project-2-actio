@@ -42,6 +42,10 @@ const sports = [
     label: "Natation",
     value: "natation",
   },
+  {
+    label: "Basket-ball",
+    value: "basket-ball",
+  },
 ];
 
 function FilterMenu(props) {

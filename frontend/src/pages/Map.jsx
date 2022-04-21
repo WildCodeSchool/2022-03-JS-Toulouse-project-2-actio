@@ -3,12 +3,13 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import axios from "axios";
 import LocationMarker from "../components/LocationMarker";
 import FilterMenu from "../components/FilterMenu";
+import PascalCase from "../components/PascalCase";
 import Icon from "../components/Icon";
 import "./Map.css";
 
 function Map() {
   const [sportSelected, setSportSelected] = useState("");
-  const [sportLocations, setSportLocations] = useState([]);
+  const [sportInfo, setSportInfo] = useState([]);
 
   const getLocation = () => {
     switch (sportSelected) {
@@ -17,42 +18,92 @@ function Map() {
           .get(
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=courts-de-tennis&q=&rows=50"
           )
-          .then((response) => setSportLocations(response.data.records));
+          .then((response) =>
+            setSportInfo(
+              response.data.records.map((el) => ({
+                name: `Court de tennis ${el.fields.index}`,
+                coord: el.fields.geo_point_2d,
+                key: el.recordid,
+              }))
+            )
+          );
         break;
       case "patinage":
         axios
           .get(
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=patinoires&q="
           )
-          .then((response) => setSportLocations(response.data.records));
+          .then((response) =>
+            setSportInfo(
+              response.data.records.map((el) => ({
+                name: `${PascalCase(el.fields.nom_complet)} | ${
+                  el.fields.telephone
+                } | ${el.fields.adresse}`,
+                coord: el.fields.geo_point_2d,
+                key: el.recordid,
+              }))
+            )
+          );
         break;
       case "skate":
         axios
           .get(
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=skate-parcs&q="
           )
-          .then((response) => setSportLocations(response.data.records));
+          .then((response) =>
+            setSportInfo(
+              response.data.records.map((el) => ({
+                name: `Skatepark ${el.fields.index}`,
+                coord: el.fields.geo_point_2d,
+                key: el.recordid,
+              }))
+            )
+          );
         break;
       case "natation":
         axios
           .get(
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=piscines&q=&rows=20"
           )
-          .then((response) => setSportLocations(response.data.records));
+          .then((response) =>
+            setSportInfo(
+              response.data.records.map((el) => ({
+                name: `Piscine ${el.fields.index} | ${el.fields.telephone} | ${el.fields.adresse}`,
+                coord: el.fields.geo_point_2d,
+                key: el.recordid,
+              }))
+            )
+          );
         break;
       case "petanque":
         axios
           .get(
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=boulodromes&q=&rows=100"
           )
-          .then((response) => setSportLocations(response.data.records));
+          .then((response) =>
+            setSportInfo(
+              response.data.records.map((el) => ({
+                name: `Boulodrome ${el.fields.index}`,
+                coord: el.fields.geo_point_2d,
+                key: el.recordid,
+              }))
+            )
+          );
         break;
       case "fitness":
         axios
           .get(
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=site-communal-dimplantation-de-fitness&q=&rows=50"
           )
-          .then((response) => setSportLocations(response.data.records));
+          .then((response) =>
+            setSportInfo(
+              response.data.records.map((el) => ({
+                name: `Module de fitness ${PascalCase(el.fields.site)}`,
+                coord: el.fields.geo_point_2d,
+                key: el.recordid,
+              }))
+            )
+          );
         break;
       case "football":
         axios
@@ -60,10 +111,14 @@ function Map() {
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=stades&q=&rows=50"
           )
           .then((response) =>
-            setSportLocations(
-              response.data.records.filter(
-                (location) => location.fields.foot === "O"
-              )
+            setSportInfo(
+              response.data.records
+                .filter((el) => el.fields.foot === "O")
+                .map((el) => ({
+                  name: `Terrain de football ${el.fields.index}`,
+                  coord: el.fields.geo_point_2d,
+                  key: el.recordid,
+                }))
             )
           );
         break;
@@ -73,24 +128,41 @@ function Map() {
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=stades&q=&rows=50"
           )
           .then((response) =>
-            setSportLocations(
-              response.data.records.filter(
-                (location) => location.fields.rugby === "O"
-              )
+            setSportInfo(
+              response.data.records
+                .filter((el) => el.fields.rugby === "O")
+                .map((el) => ({
+                  name: `Terrain de rugby ${el.fields.index}`,
+                  coord: el.fields.geo_point_2d,
+                  key: el.recordid,
+                }))
             )
           );
         break;
       case "volley-ball":
       case "handball":
+      case "basket-ball":
         axios
           .get(
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=gymnases&q=&rows=50"
           )
-          .then((response) => setSportLocations(response.data.records));
+          .then((response) =>
+            setSportInfo(
+              response.data.records.map((el) => ({
+                name: `Gymnase ${el.fields.index}`,
+                coord: el.fields.geo_point_2d,
+                key: el.recordid,
+              }))
+            )
+          );
         break;
       default:
-        setSportLocations([
-          { fields: { geo_point_2d: [43.604652, 1.444209] }, recordid: "1" },
+        setSportInfo([
+          {
+            name: "Toulouse",
+            coord: [43.604652, 1.444209],
+            key: "1",
+          },
         ]);
         break;
     }
@@ -111,16 +183,9 @@ function Map() {
           className="map-tiles"
         />
         {/* Once we get the different locations from the API display marker on the map */}
-        {sportLocations.map((location) => (
-          <Marker
-            key={location.recordid}
-            position={location.fields.geo_point_2d}
-            icon={Icon}
-          >
-            <Popup>
-              {location.fields.telephone} | {location.fields.nom_complet} |{" "}
-              {location.fields.adresse}
-            </Popup>
+        {sportInfo.map((el) => (
+          <Marker key={el.key} position={el.coord} icon={Icon}>
+            <Popup>{el.name}</Popup>
           </Marker>
         ))}
         <LocationMarker />
