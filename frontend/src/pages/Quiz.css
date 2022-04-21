@@ -33,3 +33,11 @@ button:hover {
   padding: 0.5rem;
   max-width: 320px;
 }
+
+.question-id {
+  color: #ffc857;
+}
+
+.current-answer {
+  color: #ffc857;
+}
