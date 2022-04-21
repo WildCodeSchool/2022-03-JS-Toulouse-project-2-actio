@@ -98,6 +98,7 @@ function Map() {
   useEffect(() => {
     getLocation();
   }, [sportSelected]);
+  console.log(sportLocations);
 
   return (
     <div className="Map">
