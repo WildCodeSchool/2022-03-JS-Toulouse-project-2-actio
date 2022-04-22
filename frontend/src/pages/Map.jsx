@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import axios from "axios";
 import LocationMarker from "../components/LocationMarker";
@@ -10,6 +11,12 @@ import "./Map.css";
 function Map() {
   const [sportSelected, setSportSelected] = useState("");
   const [sportInfo, setSportInfo] = useState([]);
+
+  const { sport } = useParams();
+
+  useEffect(() => {
+    setSportSelected(sport);
+  }, []);
 
   const getLocation = () => {
     switch (sportSelected) {
@@ -174,7 +181,10 @@ function Map() {
 
   return (
     <div className="Map">
-      <FilterMenu setSportSelected={setSportSelected} />
+      <FilterMenu
+        setSportSelected={setSportSelected}
+        sportSelected={sportSelected}
+      />
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
         {/* Add the className map-tiles to style the map in dark */}
         <TileLayer
