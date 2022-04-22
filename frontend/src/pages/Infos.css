@@ -1,12 +1,26 @@
-body {
-  background-color: black;
+body,
+html,
+#root,
+.App {
+  height: 100%;
 }
 
-.chosenSport-picture {
-  width: 100%;
+.Infos {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #1a1a1d;
+  font-family: nunito;
+  height: 100%;
 }
 
-.location-name {
+.Infos .chosenSport-picture {
+  background-image: url("/src/assets/patinoire.jpeg");
+  background-size: cover;
+  height: 100%;
+}
+
+.Infos .location-name {
   margin: 0 2rem;
   color: #ffc857;
   display: flex;
@@ -14,18 +28,18 @@ body {
   align-items: center;
 }
 
-.name {
+.Infos .name {
   font-size: 1.8rem;
   display: flex;
   margin-top: 0.6rem 0 0 0;
 }
 
-.description {
+.Infos .description {
   display: flex;
   margin: 0 0 2.5rem 0;
 }
 
-.location-infos {
+.Infos .location-infos {
   font-size: 0.8em;
   margin: 0 2rem;
   color: #ffc857;
@@ -33,35 +47,87 @@ body {
   flex-direction: column;
 }
 
-.location-details {
+.Infos .location-details {
   display: flex;
   text-align: initial;
   align-items: center;
   gap: 1rem;
 }
 
-.phone-details {
+.Infos .phone-details {
   color: #ffc857;
   display: flex;
   gap: 1rem;
 }
 
-.web-icone {
+.Infos .web-icone {
   color: #ffc857;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.leaflet-container {
+.Infos .leaflet-container {
   margin: 2rem;
   height: 140px;
 }
 
-.exit-acess {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  text-decoration: none;
-  color: #ffc857;
+/*----------- media queries desktop ------------ */
+
+@media screen and (min-width: 740px) {
+  .Infos {
+    background-color: #1a1a1d;
+    font-family: nunito;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+
+  .Infos .chosenSport-picture {
+    display: flex;
+    width: 50%;
+    height: 100%;
+  }
+
+  .Infos .desktop-right {
+    background-color: #1a1a1d;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+  }
+
+  .Infos .location-infos {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+
+  .Infos .location-name {
+    margin: 0 2rem;
+    color: #ffc857;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+
+  .Infos .name {
+    font-size: 3rem;
+  }
+
+  .Infos .map {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 6rem 0;
+  }
+
+  .Infos .leaflet-container {
+    display: flex;
+    margin: 2rem;
+    width: 60%;
+    height: 20vh;
+  }
 }

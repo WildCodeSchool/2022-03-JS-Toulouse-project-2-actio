@@ -1,0 +1,40 @@
+[
+  {
+    "datasetid": "patinoires",
+    "recordid": "1849a20d502d7e50ad2bcaeaac98ccabc166b1ee",
+    "fields": {
+      "telephone": "05 81 91 78 56",
+      "nom_complet": "PATINOIRE ALEX JANY",
+      "adresse": "chemin du Verdon 31500 Toulouse",
+      "geo_point_2d": [43.623946059, 1.47872035087],
+      "geo_shape": {
+        "coordinates": [1.478720350865374, 43.623946058964925],
+        "type": "Point"
+      }
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [1.47872035087, 43.623946059]
+    },
+    "record_timestamp": "2020-07-26T07:05:07.800+02:00"
+  },
+  {
+    "datasetid": "patinoires",
+    "recordid": "5c68494be95f58d521e1f31c0e16aa1a02a8c60f",
+    "fields": {
+      "telephone": "05 61 52 93 53",
+      "nom_complet": "PATINOIRE BELLEVUE",
+      "adresse": "69ter route de Narbonne 31000 TOULOUSE",
+      "geo_point_2d": [43.5677782397, 1.45329380983],
+      "geo_shape": {
+        "coordinates": [1.453293809827436, 43.56777823974975],
+        "type": "Point"
+      }
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [1.45329380983, 43.5677782397]
+    },
+    "record_timestamp": "2020-07-26T07:05:07.800+02:00"
+  }
+]

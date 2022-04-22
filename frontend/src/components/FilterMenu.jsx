@@ -11,7 +11,7 @@ function FilterMenu(props) {
 
   return (
     <div className="FilterMenu">
-      <select name="sports" id="sports-select" onChange={handleChange}>
+      <select name="sports" className="sports-select" onChange={handleChange}>
         <option value="">-- Choisis ton activité --</option>
         {/* Add a sort in order to sort the sports alphabetically */}
         {sports
