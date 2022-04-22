@@ -4,7 +4,7 @@ import axios from "axios";
 import LocationMarker from "../components/LocationMarker";
 import SwitchMapListFilter from "../components/SwitchMapListFilter";
 import FilterMenu from "../components/FilterMenu";
-import PascalCase from "../components/PascalCase";
+import pascalCase from "../components/pascalCase";
 import Icon from "../components/Icon";
 import "./Map.css";
 
@@ -37,7 +37,7 @@ function Map() {
           .then((response) =>
             setSportInfo(
               response.data.records.map((el) => ({
-                name: `${PascalCase(el.fields.nom_complet)} | ${
+                name: `${pascalCase(el.fields.nom_complet)} | ${
                   el.fields.telephone
                 } | ${el.fields.adresse}`,
                 coord: el.fields.geo_point_2d,
@@ -99,7 +99,7 @@ function Map() {
           .then((response) =>
             setSportInfo(
               response.data.records.map((el) => ({
-                name: `Module de fitness ${PascalCase(el.fields.site)}`,
+                name: `Module de fitness ${pascalCase(el.fields.site)}`,
                 coord: el.fields.geo_point_2d,
                 key: el.recordid,
               }))

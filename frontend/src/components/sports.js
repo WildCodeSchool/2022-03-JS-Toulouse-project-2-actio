@@ -17,7 +17,7 @@ const sports = [
   },
   {
     label: "Volley-ball",
-    value: "volley-ball",
+    value: "volleyball",
   },
   {
     label: "Pétanque",
@@ -38,6 +38,10 @@ const sports = [
   {
     label: "Natation",
     value: "natation",
+  },
+  {
+    label: "Basket-ball",
+    value: "basketball",
   },
 ];
 
