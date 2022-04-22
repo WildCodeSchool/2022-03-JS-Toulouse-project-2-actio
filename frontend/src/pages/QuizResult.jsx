@@ -9,10 +9,10 @@ function QuizResult() {
         Les resultats sont tombés, voici les activités que nous vous proposons :
       </h2>
       <div className="sport-container">
-        <SuggestedSport />
-        <SuggestedSport />
-        <SuggestedSport />
-        <SuggestedSport />
+        <SuggestedSport sport="football" />
+        <SuggestedSport sport="basketball" />
+        <SuggestedSport sport="handball" />
+        <SuggestedSport sport="petanque" />
       </div>
     </div>
   );
