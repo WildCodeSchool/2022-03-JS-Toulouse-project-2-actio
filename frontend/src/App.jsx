@@ -12,6 +12,12 @@ import Infos from "./pages/Infos";
 import "./App.css";
 import Navbar from "./components/Navbar";
 
+const selectedLocation = {
+  name: "PATINOIRE BELLEVUE",
+  coord: [43.5677782397, 1.45329380983],
+  key: "1",
+};
+
 function App() {
   return (
     <Router>
@@ -40,7 +46,15 @@ function App() {
           <Route path="/map" element={<Map />} />
           <Route path="/Quiz" element={<Quiz />} />
           <Route path="/QuizResult" element={<QuizResult />} />
-          <Route path="/Infos" element={<Infos />} />
+          <Route
+            path="/Infos"
+            element={
+              <Infos
+                locationName={selectedLocation.name}
+                coordonnees={selectedLocation.coord}
+              />
+            }
+          />
         </Routes>
         <Navbar />
       </div>

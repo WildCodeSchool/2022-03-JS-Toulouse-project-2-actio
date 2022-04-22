@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Infos.css";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import axios from "axios";
 
-function Infos({ locationName, address, phone, coordonnees }) {
-  /* const props = {
-     locationName: "PATINOIRE BELLEVUE",
-    address: "69ter route de Narbonne 31000 TOULOUSE",
-    phone: "05 61 52 93 53",
-    location: [43.604652, 1.444209], 
+function Infos({ locationName, phone, coordonnees }) {
+  /* const [selectedLocation, setSelectedLocation] = useState(""); */
+  const [address, setAddress] = useState("");
 
-  }; */
+  axios
+    .get(
+      `https://api-adresse.data.gouv.fr/reverse/?lon=${coordonnees[1]}&lat=${coordonnees[0]}`
+    )
+    .then((response) => {
+      setAddress(response.data.features[0].properties.label);
+    });
 
   return (
     <div className="Infos">
