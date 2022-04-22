@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Map from "./pages/Map";
+import List from "./pages/List";
 import Quiz from "./pages/Quiz";
 import QuizResult from "./pages/QuizResult";
 import Infos from "./pages/Infos";
@@ -25,6 +26,9 @@ function App() {
               <NavLink to="/map">Map</NavLink>
             </li>
             <li>
+              <NavLink to="/list">List</NavLink>
+            </li>
+            <li>
               <NavLink to="/Quiz">Quiz</NavLink>
             </li>
             <li>
@@ -39,6 +43,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<Map />} />
           <Route path="/map/:sport" element={<Map />} />
+          <Route path="/list" element={<List />} />
           <Route path="/Quiz" element={<Quiz />} />
           <Route path="/QuizResult" element={<QuizResult />} />
           <Route path="/Infos" element={<Infos />} />

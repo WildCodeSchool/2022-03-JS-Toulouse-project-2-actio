@@ -1,0 +1,33 @@
+.switch {
+  display: inline-flex;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  position: absolute;
+  left: 29%;
+  top: 25%;
+}
+
+.switch__input {
+  display: none;
+}
+
+.switch__label {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-family: nunito;
+  color: black;
+  background: #ffda8f;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+
+.switch__input + .switch__label{
+  border-right: 1px solid #ffc857;
+}
+
+.switch__input:checked + .switch__label {
+  background: #ffc857;
+}

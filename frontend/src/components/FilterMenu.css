@@ -2,6 +2,7 @@
   position: absolute;
   z-index: 1000;
   width: 50%;
+  top: 25%;
   left: 25%;
   margin: 2rem auto;
 }
