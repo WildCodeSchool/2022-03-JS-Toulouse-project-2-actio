@@ -1,5 +1,6 @@
 import React from "react";
 import sports from "./sports";
+import "./FilterMenu.css";
 
 function FilterMenu(props) {
   const { setSportSelected } = props;
