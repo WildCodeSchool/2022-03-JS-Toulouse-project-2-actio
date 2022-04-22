@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import axios from "axios";
 import LocationMarker from "../components/LocationMarker";
+import SwitchMapListFilter from "../components/SwitchMapListFilter";
 import FilterMenu from "../components/FilterMenu";
 import PascalCase from "../components/PascalCase";
 import Icon from "../components/Icon";
@@ -175,6 +176,7 @@ function Map() {
   return (
     <div className="Map">
       <FilterMenu setSportSelected={setSportSelected} />
+      <SwitchMapListFilter />
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
         {/* Add the className map-tiles to style the map in dark */}
         <TileLayer
