@@ -7,10 +7,8 @@ function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [answer, setAnswer] = useState("");
-  // eslint-disable-next-line no-unused-vars
   const handleAnswerButtonClick = (event) => {
     setAnswer(event.target.value);
-    // eslint-disable-next-line no-console
     const nextQuestion = currentQuestion + 1;
     setCurrentQuestion(currentQuestion + 1);
     if (nextQuestion < question.length) {
@@ -21,7 +19,10 @@ function Quiz() {
     }
   };
   const handleReturnButtonCLick = () => {
-    if (currentQuestion > 0) setCurrentQuestion(currentQuestion - 1);
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+      setShowResult(false);
+    }
   };
 
   return (

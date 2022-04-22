@@ -1,6 +1,6 @@
 const question = [
   {
-    questionText: "Etes vous un homme ou une femme ?",
+    questionText: "Êtes-vous un homme ou une femme ?",
     answerOptions: [{ answerText: "Homme" }, { answerText: "Femme" }],
   },
   {
