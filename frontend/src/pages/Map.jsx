@@ -5,12 +5,22 @@ import LocationMarker from "../components/LocationMarker";
 import SwitchMapListFilter from "../components/SwitchMapListFilter";
 import FilterMenu from "../components/FilterMenu";
 import pascalCase from "../components/pascalCase";
+import distance from "../components/distance";
 import Icon from "../components/Icon";
 import "./Map.css";
 
 function Map() {
+  // Set a radius to display markers within this radius in kilometers
+  const radius = 5;
+
+  // sportSelected is to know which sport has been selected by the user using the filter
   const [sportSelected, setSportSelected] = useState("");
+
+  // sportInfo are the data that we retrieve from the APIs (coordinates & name of the place)
   const [sportInfo, setSportInfo] = useState([]);
+
+  // position corresponds to the coordinates of the user. We initialize it with the coordinates of Toulouse
+  const [position, setPosition] = useState({ lat: 43.604652, lng: 1.444209 });
 
   const getLocation = () => {
     switch (sportSelected) {
@@ -140,9 +150,9 @@ function Map() {
             )
           );
         break;
-      case "volley-ball":
+      case "volleyball":
       case "handball":
-      case "basket-ball":
+      case "basketball":
         axios
           .get(
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=gymnases&q=&rows=50"
@@ -185,12 +195,18 @@ function Map() {
           className="map-tiles"
         />
         {/* Once we get the different locations from the API display marker on the map */}
-        {sportInfo.map((el) => (
-          <Marker key={el.key} position={el.coord} icon={Icon}>
-            <Popup>{el.name}</Popup>
-          </Marker>
-        ))}
-        <LocationMarker />
+        {sportInfo
+          .filter(
+            (el) =>
+              distance(position.lat, position.lng, el.coord[0], el.coord[1]) <=
+              radius
+          )
+          .map((el) => (
+            <Marker key={el.key} position={el.coord} icon={Icon}>
+              <Popup>{el.name}</Popup>
+            </Marker>
+          ))}
+        <LocationMarker position={position} setPosition={setPosition} />
       </MapContainer>
     </div>
   );
