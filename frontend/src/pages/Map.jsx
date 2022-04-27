@@ -16,8 +16,8 @@ function Map() {
   // sportSelected is to know which sport has been selected by the user using the filter
   const [sportSelected, setSportSelected] = useState("");
 
-  // sportInfo are the data that we retrieve from the APIs (coordinates & name of the place)
-  const [sportInfo, setSportInfo] = useState([]);
+  // sportInfos are the data that we retrieve from the APIs (coordinates & name of the place)
+  const [sportInfos, setSportInfos] = useState([]);
 
   // position corresponds to the coordinates of the user. We initialize it with the coordinates of Toulouse
   const [position, setPosition] = useState({ lat: 43.604652, lng: 1.444209 });
@@ -30,7 +30,7 @@ function Map() {
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=courts-de-tennis&q=&rows=50"
           )
           .then((response) =>
-            setSportInfo(
+            setSportInfos(
               response.data.records.map((el) => ({
                 name: `Court de tennis ${el.fields.index}`,
                 coord: el.fields.geo_point_2d,
@@ -45,7 +45,7 @@ function Map() {
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=patinoires&q="
           )
           .then((response) =>
-            setSportInfo(
+            setSportInfos(
               response.data.records.map((el) => ({
                 name: `${pascalCase(el.fields.nom_complet)} | ${
                   el.fields.telephone
@@ -62,7 +62,7 @@ function Map() {
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=skate-parcs&q="
           )
           .then((response) =>
-            setSportInfo(
+            setSportInfos(
               response.data.records.map((el) => ({
                 name: `Skatepark ${el.fields.index}`,
                 coord: el.fields.geo_point_2d,
@@ -77,7 +77,7 @@ function Map() {
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=piscines&q=&rows=20"
           )
           .then((response) =>
-            setSportInfo(
+            setSportInfos(
               response.data.records.map((el) => ({
                 name: `Piscine ${el.fields.index} | ${el.fields.telephone} | ${el.fields.adresse}`,
                 coord: el.fields.geo_point_2d,
@@ -92,7 +92,7 @@ function Map() {
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=boulodromes&q=&rows=100"
           )
           .then((response) =>
-            setSportInfo(
+            setSportInfos(
               response.data.records.map((el) => ({
                 name: `Boulodrome ${el.fields.index}`,
                 coord: el.fields.geo_point_2d,
@@ -107,7 +107,7 @@ function Map() {
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=site-communal-dimplantation-de-fitness&q=&rows=50"
           )
           .then((response) =>
-            setSportInfo(
+            setSportInfos(
               response.data.records.map((el) => ({
                 name: `Module de fitness ${pascalCase(el.fields.site)}`,
                 coord: el.fields.geo_point_2d,
@@ -122,7 +122,7 @@ function Map() {
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=stades&q=&rows=50"
           )
           .then((response) =>
-            setSportInfo(
+            setSportInfos(
               response.data.records
                 .filter((el) => el.fields.foot === "O")
                 .map((el) => ({
@@ -139,7 +139,7 @@ function Map() {
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=stades&q=&rows=50"
           )
           .then((response) =>
-            setSportInfo(
+            setSportInfos(
               response.data.records
                 .filter((el) => el.fields.rugby === "O")
                 .map((el) => ({
@@ -158,7 +158,7 @@ function Map() {
             "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=gymnases&q=&rows=50"
           )
           .then((response) =>
-            setSportInfo(
+            setSportInfos(
               response.data.records.map((el) => ({
                 name: `Gymnase ${el.fields.index}`,
                 coord: el.fields.geo_point_2d,
@@ -168,7 +168,7 @@ function Map() {
           );
         break;
       default:
-        setSportInfo([
+        setSportInfos([
           {
             name: "Toulouse",
             coord: [43.604652, 1.444209],
@@ -195,15 +195,19 @@ function Map() {
           className="map-tiles"
         />
         {/* Once we get the different locations from the API display marker on the map */}
-        {sportInfo
+        {sportInfos
           .filter(
-            (el) =>
-              distance(position.lat, position.lng, el.coord[0], el.coord[1]) <=
-              radius
+            (sportInfo) =>
+              distance(
+                position.lat,
+                position.lng,
+                sportInfo.coord[0],
+                sportInfo.coord[1]
+              ) <= radius
           )
-          .map((el) => (
-            <Marker key={el.key} position={el.coord} icon={Icon}>
-              <Popup>{el.name}</Popup>
+          .map((sportInfo) => (
+            <Marker key={sportInfo.key} position={sportInfo.coord} icon={Icon}>
+              <Popup>{sportInfo.name}</Popup>
             </Marker>
           ))}
         <LocationMarker position={position} setPosition={setPosition} />
