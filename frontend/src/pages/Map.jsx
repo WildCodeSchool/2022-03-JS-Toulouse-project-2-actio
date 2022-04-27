@@ -14,8 +14,8 @@ function Map() {
   // Set a radius to display markers within this radius in kilometers
   const radius = 5;
 
-  // sportSelected is to know which sport has been selected by the user using the filter
-  const [sportSelected, setSportSelected] = useState("");
+  // sportsSelected is to know which sport has been selected by the user using the filter
+  const [sportsSelected, setSportsSelected] = useState([]);
 
   // sportInfos are the data that we retrieve from the APIs (coordinates & name of the place)
   const [sportInfos, setSportInfos] = useState([]);
@@ -23,14 +23,17 @@ function Map() {
   // position corresponds to the coordinates of the user. We initialize it with the coordinates of Toulouse
   const [position, setPosition] = useState({ lat: 43.604652, lng: 1.444209 });
 
+  // if we get a sport as an url param we set this sport to the sport selected
   const { sport } = useParams();
 
   useEffect(() => {
-    setSportSelected(sport);
+    if (sport) {
+      setSportsSelected([sport]);
+    }
   }, []);
 
   const getLocation = () => {
-    switch (sportSelected) {
+    switch (sportsSelected) {
       case "tennis":
         axios
           .get(
@@ -188,13 +191,13 @@ function Map() {
 
   useEffect(() => {
     getLocation();
-  }, [sportSelected]);
+  }, [sportsSelected]);
 
   return (
     <div className="Map">
       <FilterMenu
-        setSportSelected={setSportSelected}
-        sportSelected={sportSelected}
+        setSportsSelected={setSportsSelected}
+        sportsSelected={sportsSelected}
       />
       <SwitchMapListFilter />
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
