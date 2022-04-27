@@ -1,7 +1,7 @@
 import question from "./question";
 import sports from "./sports";
 
-const quizChoice = () => {
+const quizChoice = (answer, setCurrentQuestion) => {
   if (answer === "Homme" || answer === "Femme") {
     setCurrentQuestion(question[1]);
   }
