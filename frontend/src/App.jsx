@@ -42,6 +42,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<Map />} />
+          <Route path="/map/:sport" element={<Map />} />
           <Route path="/list" element={<List />} />
           <Route path="/Quiz" element={<Quiz />} />
           <Route path="/QuizResult" element={<QuizResult />} />

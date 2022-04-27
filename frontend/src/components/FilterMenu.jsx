@@ -3,7 +3,7 @@ import sports from "./sports";
 import "./FilterMenu.css";
 
 function FilterMenu(props) {
-  const { setSportSelected } = props;
+  const { sportSelected, setSportSelected } = props;
 
   const handleChange = (e) => {
     setSportSelected(e.target.value);
@@ -11,7 +11,11 @@ function FilterMenu(props) {
 
   return (
     <div className="FilterMenu">
-      <select name="sports" className="sports-select" onChange={handleChange}>
+      <select
+        className="sports-select"
+        onChange={handleChange}
+        value={sportSelected}
+      >
         <option value="">-- Choisis ton activité --</option>
         {/* Add a sort in order to sort the sports alphabetically */}
         {sports
