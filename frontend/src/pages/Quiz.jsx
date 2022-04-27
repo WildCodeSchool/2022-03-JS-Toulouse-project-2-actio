@@ -7,8 +7,10 @@ function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [answer, setAnswer] = useState("");
+  const [tableOfResult, setTableOfResult] = useState([]);
   const handleAnswerButtonClick = (event) => {
     setAnswer(event.target.value);
+    setTableOfResult([...tableOfResult, event.target.value]);
     const nextQuestion = currentQuestion + 1;
     setCurrentQuestion(currentQuestion + 1);
     if (nextQuestion < question.length) {
@@ -40,6 +42,9 @@ function Quiz() {
         ))}
         <div>
           <p className="current-answer">{answer}</p>
+        </div>
+        <div>
+          <p className="tableResult">{tableOfResult}</p>
         </div>
         <div>
           <button
