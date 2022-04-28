@@ -10,8 +10,8 @@ import Icon from "../components/Icon";
 import "./Map.css";
 
 function Map() {
-  // Set a radius to display markers within this radius in kilometers
-  const radius = 50;
+  // Set a filterRadius to display markers within this radius in kilometers
+  const filterRadius = 50;
 
   // sportsSelected is to know which sport has been selected by the user using the filter
   const [sportsSelected, setSportsSelected] = useState([]);
@@ -58,7 +58,7 @@ function Map() {
                 position.lng,
                 sportInfo.coord[0],
                 sportInfo.coord[1]
-              ) <= radius
+              ) <= filterRadius
           )
           .map((sportInfo) => (
             <Marker key={sportInfo.key} position={sportInfo.coord} icon={Icon}>
