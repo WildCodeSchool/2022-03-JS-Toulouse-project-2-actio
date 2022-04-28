@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import "./Quiz.css";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import question from "../components/question";
 import reponseOfQuiz from "../components/reponseOfQuiz";
 import QuizResult from "./QuizResult";
@@ -12,6 +12,7 @@ function Quiz() {
   const [answer, setAnswer] = useState("");
   const [tableOfResult, setTableOfResult] = useState([]);
   const [disable, setDisable] = useState(false);
+  const [sportResultStringed, setSportResultStringed] = useState("");
   const handleAnswerButtonClick = (event) => {
     setAnswer(event.target.value);
     setTableOfResult([...tableOfResult, event.target.value]);
@@ -21,8 +22,9 @@ function Quiz() {
     } else {
       setCurrentQuestion(currentQuestion);
       setShowResult(true);
-      const response = reponseOfQuiz([...tableOfResult, event.target.value]);
+      const sportResult = reponseOfQuiz([...tableOfResult, event.target.value]);
       setDisable(true);
+      setSportResultStringed(JSON.stringify(sportResult));
     }
   };
 
@@ -62,7 +64,14 @@ function Quiz() {
       </div>
       <div className="show-result">
         {showResult ? (
-          <button type="button">Voir les activités proposées</button>
+          <button type="button" className="quiz-result-button">
+            <NavLink
+              className="quiz-result-link"
+              to={`/QuizResult/${sportResultStringed}`}
+            >
+              Voir les activités proposées
+            </NavLink>
+          </button>
         ) : (
           <p />
         )}

@@ -38,8 +38,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<Map />} />
-          <Route path="/Quiz/*" element={<Quiz />} />
-          <Route path="/QuizResult" element={<QuizResult />} />
+          <Route path="/Quiz" element={<Quiz />} />
+          <Route path="/QuizResult/:result" element={<QuizResult />} />
           <Route path="/Infos" element={<Infos />} />
         </Routes>
         <Navbar />
