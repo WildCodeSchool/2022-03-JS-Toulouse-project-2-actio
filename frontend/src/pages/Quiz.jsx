@@ -12,7 +12,6 @@ function Quiz() {
     setAnswer(event.target.value);
     setTableOfResult([...tableOfResult, event.target.value]);
     const nextQuestion = currentQuestion + 1;
-    setCurrentQuestion(currentQuestion + 1);
     if (nextQuestion < question.length) {
       setCurrentQuestion(nextQuestion);
     } else {
@@ -20,6 +19,7 @@ function Quiz() {
       setShowResult(true);
     }
   };
+
   const handleReturnButtonCLick = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
