@@ -5,15 +5,13 @@ import axios from "axios";
 import LocationMarker from "../components/LocationMarker";
 import SwitchMapListFilter from "../components/SwitchMapListFilter";
 import FilterMenu from "../components/FilterMenu";
+import Slider from "../components/Slider";
 import pascalCase from "../components/pascalCase";
 import distance from "../components/distance";
 import Icon from "../components/Icon";
 import "./Map.css";
 
 function Map() {
-  // Set a radius to display markers within this radius in kilometers
-  const radius = 5;
-
   // sportSelected is to know which sport has been selected by the user using the filter
   const [sportSelected, setSportSelected] = useState("");
 
@@ -190,6 +188,12 @@ function Map() {
     getLocation();
   }, [sportSelected]);
 
+  // Define a value for the slider
+  const [value, setValue] = useState(2);
+
+  // Set a radius to display markers within this radius in kilometers
+  const radius = value;
+
   return (
     <div className="Map">
       <FilterMenu
@@ -197,6 +201,7 @@ function Map() {
         sportSelected={sportSelected}
       />
       <SwitchMapListFilter />
+      <Slider value={value} setValue={setValue} />
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
         {/* Add the className map-tiles to style the map in dark */}
         <TileLayer
