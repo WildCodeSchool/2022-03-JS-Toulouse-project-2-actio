@@ -15,6 +15,7 @@ import Navbar from "./components/Navbar";
 const selectedLocation = {
   name: "PATINOIRE BELLEVUE",
   coord: [43.5677782397, 1.45329380983],
+  type: "football",
   key: "1",
 };
 
@@ -52,6 +53,7 @@ function App() {
               <Infos
                 locationName={selectedLocation.name}
                 coordonnees={selectedLocation.coord}
+                typeOfSport={selectedLocation.type}
               />
             }
           />

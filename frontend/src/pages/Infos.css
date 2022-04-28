@@ -12,12 +12,14 @@ html,
   background-color: #1a1a1d;
   font-family: nunito;
   height: 100%;
+  width: 100%;
+
 }
 
 .Infos .chosenSport-picture {
-  background-image: url("/src/assets/patinoire.jpeg");
-  background-size: cover;
-  height: 100%;
+  background-image: center;
+  background-size: 400px;
+  width: 100%;  
 }
 
 .Infos .location-name {
