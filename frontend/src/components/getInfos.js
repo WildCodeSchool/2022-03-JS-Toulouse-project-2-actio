@@ -100,7 +100,7 @@ const getInfos = async (sportsSelected, setSportInfos) => {
           .map((el) => ({
             name: `Terrain de football ${el.fields.index}`,
             coord: el.fields.geo_point_2d,
-            key: el.recordid,
+            key: `foot_${el.recordid}`,
           }));
       });
     infos = [...infos, ...res];
@@ -116,7 +116,7 @@ const getInfos = async (sportsSelected, setSportInfos) => {
           .map((el) => ({
             name: `Terrain de rugby ${el.fields.index}`,
             coord: el.fields.geo_point_2d,
-            key: el.recordid,
+            key: `rugby_${el.recordid}`,
           }));
       });
     infos = [...infos, ...res];
