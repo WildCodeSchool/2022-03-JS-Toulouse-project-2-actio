@@ -1,6 +1,5 @@
-let result = 0;
-
 function reponseOfQuiz(tableOfResult) {
+  let result = [];
   if (
     tableOfResult[0] === "15-50 ans" &&
     tableOfResult[1] === "Sport collectif" &&

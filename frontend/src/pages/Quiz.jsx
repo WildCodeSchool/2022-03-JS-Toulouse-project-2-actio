@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import "./Quiz.css";
 import { NavLink } from "react-router-dom";
 import question from "../components/question";
+import reponseOfQuiz from "../components/reponseOfQuiz";
 
 function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -17,6 +19,7 @@ function Quiz() {
     } else {
       setCurrentQuestion(currentQuestion);
       setShowResult(true);
+      const response = reponseOfQuiz([...tableOfResult, event.target.value]);
     }
   };
 
@@ -40,9 +43,6 @@ function Quiz() {
             {answerOption.answerText}
           </button>
         ))}
-        <div>
-          <p className="current-answer">{answer}</p>
-        </div>
         <div>
           <p className="tableResult">{tableOfResult}</p>
         </div>
