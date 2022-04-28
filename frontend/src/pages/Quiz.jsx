@@ -1,23 +1,28 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import "./Quiz.css";
 import { NavLink } from "react-router-dom";
 import question from "../components/question";
+import reponseOfQuiz from "../components/reponseOfQuiz";
 
 function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [answer, setAnswer] = useState("");
+  const [tableOfResult, setTableOfResult] = useState([]);
   const handleAnswerButtonClick = (event) => {
     setAnswer(event.target.value);
+    setTableOfResult([...tableOfResult, event.target.value]);
     const nextQuestion = currentQuestion + 1;
-    setCurrentQuestion(currentQuestion + 1);
     if (nextQuestion < question.length) {
       setCurrentQuestion(nextQuestion);
     } else {
       setCurrentQuestion(currentQuestion);
       setShowResult(true);
+      const response = reponseOfQuiz([...tableOfResult, event.target.value]);
     }
   };
+
   const handleReturnButtonCLick = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
@@ -39,7 +44,7 @@ function Quiz() {
           </button>
         ))}
         <div>
-          <p className="current-answer">{answer}</p>
+          <p className="tableResult">{tableOfResult}</p>
         </div>
         <div>
           <button
