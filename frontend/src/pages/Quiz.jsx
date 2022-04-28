@@ -1,15 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import "./Quiz.css";
-import { NavLink } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import question from "../components/question";
 import reponseOfQuiz from "../components/reponseOfQuiz";
+import QuizResult from "./QuizResult";
 
 function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [answer, setAnswer] = useState("");
   const [tableOfResult, setTableOfResult] = useState([]);
+  const [disable, setDisable] = useState(false);
   const handleAnswerButtonClick = (event) => {
     setAnswer(event.target.value);
     setTableOfResult([...tableOfResult, event.target.value]);
@@ -20,13 +22,14 @@ function Quiz() {
       setCurrentQuestion(currentQuestion);
       setShowResult(true);
       const response = reponseOfQuiz([...tableOfResult, event.target.value]);
+      setDisable(true);
     }
   };
 
   const handleReturnButtonCLick = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
-      setShowResult(false);
+      setDisable(false);
     }
   };
 
@@ -36,6 +39,7 @@ function Quiz() {
       <div className="answer-section">
         {question[currentQuestion].answerOptions.map((answerOption) => (
           <button
+            disabled={disable}
             type="button"
             value={answerOption.answerText}
             onClick={(event) => handleAnswerButtonClick(event)}
@@ -56,13 +60,9 @@ function Quiz() {
           </button>
         </div>
       </div>
-      <div className="show-result-button">
+      <div className="show-result">
         {showResult ? (
-          <button type="button" className="quiz-result-button">
-            <NavLink className="quiz-result-link" to="/QuizResult">
-              Voir les activités proposées
-            </NavLink>
-          </button>
+          <button type="button">Voir les activités proposées</button>
         ) : (
           <p />
         )}
