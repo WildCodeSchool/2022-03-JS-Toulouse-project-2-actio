@@ -49,18 +49,14 @@ function Quiz() {
             {answerOption.answerText}
           </button>
         ))}
-        <div>
+        <div className="table-result">
           <p className="tableResult">{tableOfResult}</p>
         </div>
-        <div>
-          <button
-            type="button"
-            className="quiz-return-button"
-            onClick={() => handleReturnButtonCLick()}
-          >
-            Retour en arrière
-          </button>
-        </div>
+      </div>
+      <div className="quiz-return">
+        <button type="button" onClick={() => handleReturnButtonCLick()}>
+          Retour en arrière
+        </button>
       </div>
       <div className="show-result">
         {showResult ? (
