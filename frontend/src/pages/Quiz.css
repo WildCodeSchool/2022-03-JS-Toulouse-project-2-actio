@@ -30,6 +30,10 @@
   justify-content: center;
 }
 
+button {
+  border-radius: 0.5rem;
+}
+
 .quiz-container > h2 {
   color: #ffc857;
 }
