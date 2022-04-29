@@ -2,7 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./SwitchMapListFilter.css";
 
-export default function SwitchMapListFilter() {
+export default function SwitchMapListFilter({ showFilter, setShowFilter }) {
+  const handleFilterClick = () => {
+    setShowFilter(!showFilter);
+  };
+
   return (
     <div className="switch">
       <input
@@ -32,6 +36,7 @@ export default function SwitchMapListFilter() {
           value="filter"
           name="map"
           id="mySwitch3"
+          onClick={handleFilterClick}
         />
         filter
       </label>

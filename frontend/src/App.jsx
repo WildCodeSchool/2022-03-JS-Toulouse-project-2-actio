@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  NavLink,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Map from "./pages/Map";
 import List from "./pages/List";
@@ -17,28 +12,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav className="App__dev-nav">
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/map">Map</NavLink>
-            </li>
-            <li>
-              <NavLink to="/list">List</NavLink>
-            </li>
-            <li>
-              <NavLink to="/Quiz">Quiz</NavLink>
-            </li>
-            <li>
-              <NavLink to="/QuizResult">QuizResult</NavLink>
-            </li>
-            <li>
-              <NavLink to="/Infos">Infos</NavLink>
-            </li>
-          </ul>
-        </nav>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<Map />} />

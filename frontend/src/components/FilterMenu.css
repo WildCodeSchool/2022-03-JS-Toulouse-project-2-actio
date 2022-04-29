@@ -1,8 +1,81 @@
 .FilterMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   position: absolute;
-  z-index: 1000;
-  width: 50%;
-  top: 25%;
-  left: 25%;
-  margin: 2rem auto;
+  z-index: 1001;
+  width: 100%;
+  height: calc(100vh - 25% - 35.5px);
+  top: calc(25% + 35.5px);
+  bottom: 55px;
+  background-color: #fbfbfb;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.FilterMenu .checkbox-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: left;
+}
+
+.FilterMenu .checkbox-subcontainer {
+  margin-left: 1rem;
+}
+
+/* To hide the default checkboxes */
+.FilterMenu [type="checkbox"] {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+}
+
+/* To make some place for the checkboxes we're going to create */
+.FilterMenu [type="checkbox"] + label {
+  position: relative;
+  padding-left: 2rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  cursor: pointer;
+}
+
+/* Checkbox aspect before */
+.FilterMenu [type="checkbox"]:not(:checked) + label::before,
+.FilterMenu [type="checkbox"]:checked + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.4em;
+  height: 1.4em;
+  border: 1px solid #aaa;
+  background: #fff;
+  border-radius: 0.2em;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 rgba(203, 34, 237, 0.2);
+  transition: all 0.275s;
+}
+
+/* Checkbox aspect after */
+.FilterMenu [type="checkbox"]:not(:checked) + label::after,
+.FilterMenu [type="checkbox"]:checked + label::after {
+  content: "✕";
+  position: absolute;
+  top: 0.75rem;
+  left: 0.14rem;
+  font-size: 1.6rem;
+  color: #ffc857;
+  line-height: 0;
+  transition: all 0.2s;
+}
+
+/* Checkbox aspect when it is unchecked */
+.FilterMenu [type="checkbox"]:not(:checked) + label::after {
+  opacity: 0;
+  transform: scale(0) rotate(45deg);
+}
+
+/* Checkbox aspect when it is checked */
+.FilterMenu [type="checkbox"]:checked + label::after {
+  opacity: 1;
+  transform: scale(1) rotate(0);
 }
