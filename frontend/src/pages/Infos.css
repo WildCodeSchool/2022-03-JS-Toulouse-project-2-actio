@@ -13,13 +13,12 @@ html,
   font-family: nunito;
   height: 100%;
   width: 100%;
-
 }
 
 .Infos .chosenSport-picture {
   background-image: center;
-  background-size: 400px;
-  width: 100%;  
+  background-size: cover;
+  width: 100%;
 }
 
 .Infos .location-name {
@@ -79,7 +78,7 @@ html,
 @media screen and (min-width: 740px) {
   .Infos {
     background-color: #1a1a1d;
-    font-family: nunito;
+    /* font-family: nunito; */
     display: flex;
     flex-direction: row;
     height: 100%;
@@ -87,7 +86,7 @@ html,
 
   .Infos .chosenSport-picture {
     display: flex;
-    width: 50%;
+    object-fit: cover; 
     height: 100%;
   }
 
@@ -96,8 +95,9 @@ html,
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    background-position: right;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     height: 100%;
   }
 

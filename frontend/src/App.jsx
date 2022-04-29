@@ -15,7 +15,7 @@ import Navbar from "./components/Navbar";
 const selectedLocation = {
   name: "PATINOIRE BELLEVUE",
   coord: [43.5677782397, 1.45329380983],
-  type: "football",
+  type: "petanque",
   key: "1",
 };
 

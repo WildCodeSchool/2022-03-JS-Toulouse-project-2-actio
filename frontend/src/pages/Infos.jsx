@@ -5,39 +5,103 @@ import axios from "axios";
 
 function changeSportPicture(typeOfSport) {
   if (typeOfSport === "basket-ball") {
-    return <img src="/src/assets/basket.jpg" alt="terrain de basket" />;
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/basket.jpg"
+        alt="terrain de basket"
+      />
+    );
   }
   if (typeOfSport === "tennis") {
-    return <img src="/src/assets/tennis.jpg" alt="terrain de tennis" />;
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/tennis.jpg"
+        alt="terrain de tennis"
+      />
+    );
   }
   if (typeOfSport === "patinage") {
-    return <img src="/src/assets/patinoire.jpeg" alt="patinoire" />;
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/patinoire.jpeg"
+        alt="patinoire"
+      />
+    );
   }
   if (typeOfSport === "skate") {
-    return <img src="/src/assets/skatepark.jpg" alt="skatepark" />;
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/skatepark.jpg"
+        alt="skatepark"
+      />
+    );
   }
   if (typeOfSport === "petanque") {
-    return <img src="/src/assets/pétanque.jpg" alt="terrain de petanque" />;
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/pétanque.jpg"
+        alt="terrain de petanque"
+      />
+    );
   }
   if (typeOfSport === "fitness") {
-    return <img src="/src/assets/fitness.jpg" alt="salle de fitness" />;
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/fitness.jpg"
+        alt="salle de fitness"
+      />
+    );
   }
   if (typeOfSport === "volley-ball") {
     return (
-      <img src="/src/assets/volleyball.jpg" alt="terrain de volley-ball" />
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/volleyball.jpg"
+        alt="terrain de volley-ball"
+      />
     );
   }
   if (typeOfSport === "handball") {
-    return <img src="/src/assets/handball.jpg" alt="terrain de handball" />;
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/handball.jpg"
+        alt="terrain de handball"
+      />
+    );
   }
   if (typeOfSport === "natation") {
-    return <img src="/src/assets/piscine.jpg" alt="piscine" />;
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/piscine.jpg"
+        alt="piscine"
+      />
+    );
   }
   if (typeOfSport === "football") {
-    return <img src="/src/assets/football.jpg" alt="terrain de football" />;
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/football.jpg"
+        alt="terrain de football"
+      />
+    );
   }
   if (typeOfSport === "rugby") {
-    return <img src="/src/assets/rugby-post.jpg" alt="terrain de rugby" />;
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/rugby-post.jpg"
+        alt="terrain de rugby"
+      />
+    );
   }
   return <img src="/src/assets/rugby-post.jpg" alt="terrain de rugby" />;
 }
