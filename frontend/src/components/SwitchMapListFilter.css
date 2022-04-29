@@ -6,7 +6,7 @@
   z-index: 1000;
   position: absolute;
   left: 29%;
-  top: 25%;
+  top: 10%;
 }
 
 .switch__input {
@@ -23,8 +23,7 @@
   transition: background 0.1s;
 }
 
-
-.switch__input + .switch__label{
+.switch__input + .switch__label {
   border-right: 1px solid #ffc857;
 }
 

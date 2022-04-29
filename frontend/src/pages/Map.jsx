@@ -4,7 +4,6 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import LocationMarker from "../components/LocationMarker";
 import SwitchMapListFilter from "../components/SwitchMapListFilter";
 import FilterMenu from "../components/FilterMenu";
-import Slider from "../components/Slider";
 import distance from "../components/distance";
 import getInfos from "../components/getInfos";
 import Icon from "../components/Icon";
@@ -33,20 +32,29 @@ function Map() {
     getInfos(sportsSelected, setSportInfos);
   }, [sportsSelected]);
 
-  // Define a value for the slider
+  // Define a value for the slider, by default set to 2 km
   const [value, setValue] = useState(2);
 
   // Set a radius to display markers within this radius in kilometers
   const radius = value;
 
+  // We create a state to display or not the FilterMenu component
+  const [showFilter, setShowFilter] = useState(false);
+
   return (
     <div className="Map">
-      <FilterMenu
-        setSportsSelected={setSportsSelected}
-        sportsSelected={sportsSelected}
+      <SwitchMapListFilter
+        showFilter={showFilter}
+        setShowFilter={setShowFilter}
       />
-      <SwitchMapListFilter />
-      <Slider value={value} setValue={setValue} />
+      {showFilter ? (
+        <FilterMenu
+          setSportsSelected={setSportsSelected}
+          sportsSelected={sportsSelected}
+          value={value}
+          setValue={setValue}
+        />
+      ) : null}
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
         {/* Add the className map-tiles to style the map in dark */}
         <TileLayer

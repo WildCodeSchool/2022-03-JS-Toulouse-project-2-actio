@@ -1,17 +1,16 @@
-
-.list{
+.list {
   height: 100%;
 }
 
-.list__component{
+.list__component {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   height: 60%;
 }
 
-.list p{
+.list p {
   font-size: 1.5em;
-  font-family: nunito;
+  font-family: "Nunito", sans-serif;
   font-weight: bold;
 }
