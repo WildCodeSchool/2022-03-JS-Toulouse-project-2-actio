@@ -29,10 +29,9 @@ function Quiz() {
   };
 
   const handleReturnButtonCLick = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-      setDisable(false);
-    }
+    setCurrentQuestion(0);
+    setDisable(false);
+    setTableOfResult([]);
   };
 
   return (
@@ -55,7 +54,7 @@ function Quiz() {
       </div>
       <div className="quiz-return">
         <button type="button" onClick={() => handleReturnButtonCLick()}>
-          Retour en arrière
+          Recommencer le quiz
         </button>
       </div>
       <div className="show-result">
