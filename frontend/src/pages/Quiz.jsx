@@ -4,12 +4,15 @@ import "./Quiz.css";
 import { NavLink } from "react-router-dom";
 import question from "../components/question";
 import reponseOfQuiz from "../components/reponseOfQuiz";
+import QuizResult from "./QuizResult";
 
 function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [answer, setAnswer] = useState("");
   const [tableOfResult, setTableOfResult] = useState([]);
+  const [disable, setDisable] = useState(false);
+  const [sportResultStringed, setSportResultStringed] = useState("");
   const handleAnswerButtonClick = (event) => {
     setAnswer(event.target.value);
     setTableOfResult([...tableOfResult, event.target.value]);
@@ -19,14 +22,16 @@ function Quiz() {
     } else {
       setCurrentQuestion(currentQuestion);
       setShowResult(true);
-      const response = reponseOfQuiz([...tableOfResult, event.target.value]);
+      const sportResult = reponseOfQuiz([...tableOfResult, event.target.value]);
+      setDisable(true);
+      setSportResultStringed(JSON.stringify(sportResult));
     }
   };
 
   const handleReturnButtonCLick = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
-      setShowResult(false);
+      setDisable(false);
     }
   };
 
@@ -36,6 +41,7 @@ function Quiz() {
       <div className="answer-section">
         {question[currentQuestion].answerOptions.map((answerOption) => (
           <button
+            disabled={disable}
             type="button"
             value={answerOption.answerText}
             onClick={(event) => handleAnswerButtonClick(event)}
@@ -43,23 +49,22 @@ function Quiz() {
             {answerOption.answerText}
           </button>
         ))}
-        <div>
+        <div className="table-result">
           <p className="tableResult">{tableOfResult}</p>
         </div>
-        <div>
-          <button
-            type="button"
-            className="quiz-return-button"
-            onClick={() => handleReturnButtonCLick()}
-          >
-            Retour en arrière
-          </button>
-        </div>
       </div>
-      <div className="show-result-button">
+      <div className="quiz-return">
+        <button type="button" onClick={() => handleReturnButtonCLick()}>
+          Retour en arrière
+        </button>
+      </div>
+      <div className="show-result">
         {showResult ? (
           <button type="button" className="quiz-result-button">
-            <NavLink className="quiz-result-link" to="/QuizResult">
+            <NavLink
+              className="quiz-result-link"
+              to={`/QuizResult/${sportResultStringed}`}
+            >
               Voir les activités proposées
             </NavLink>
           </button>
