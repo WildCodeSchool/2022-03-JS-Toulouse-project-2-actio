@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Slider from "./Slider";
 import sports from "./sports";
 import "./FilterMenu.css";
@@ -17,7 +18,13 @@ function FilterMenu(props) {
   };
 
   return (
-    <div className="FilterMenu">
+    <motion.div
+      className="FilterMenu"
+      initial={{ y: 500 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      exit={{ y: 500 }}
+    >
       <Slider value={value} setValue={setValue} />
       {/* Add a sort in order to sort the sports alphabetically */}
       {/* if a sport is passed as an url param, checked the checkbox corresponding to the sport with checked = {sportsSelected.includes(sport.value)} */}
@@ -37,7 +44,7 @@ function FilterMenu(props) {
             </div>
           ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

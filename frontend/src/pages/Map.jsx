@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { AnimatePresence } from "framer-motion";
 import LocationMarker from "../components/LocationMarker";
 import SwitchMapListFilter from "../components/SwitchMapListFilter";
 import FilterMenu from "../components/FilterMenu";
@@ -47,14 +48,16 @@ function Map() {
         showFilter={showFilter}
         setShowFilter={setShowFilter}
       />
-      {showFilter ? (
-        <FilterMenu
-          setSportsSelected={setSportsSelected}
-          sportsSelected={sportsSelected}
-          value={value}
-          setValue={setValue}
-        />
-      ) : null}
+      <AnimatePresence>
+        {showFilter ? (
+          <FilterMenu
+            setSportsSelected={setSportsSelected}
+            sportsSelected={sportsSelected}
+            value={value}
+            setValue={setValue}
+          />
+        ) : null}
+      </AnimatePresence>
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
         {/* Add the className map-tiles to style the map in dark */}
         <TileLayer
