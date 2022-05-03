@@ -79,3 +79,11 @@
   opacity: 1;
   transform: scale(1) rotate(0);
 }
+
+@media screen and (min-width: 768px) {
+  .FilterMenu .checkbox-container {
+    width: 65ch;
+    margin-left: calc((100vw - 65ch) / 2 + 100px);
+    margin-right: calc((100vw - 65ch) / 2);
+  }
+}
