@@ -47,6 +47,7 @@ function Map() {
         showFilter={showFilter}
         setShowFilter={setShowFilter}
       />
+      {/* the tag AnimatePresence is to animate the FilterMenu component when it is unmounted thanks to the library framer-motion */}
       <AnimatePresence>
         {showFilter ? (
           <FilterMenu
