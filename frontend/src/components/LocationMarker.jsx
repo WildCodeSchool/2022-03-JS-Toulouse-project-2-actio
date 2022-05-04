@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useMap, Marker } from "react-leaflet";
 
-function LocationMarker() {
-  const [position, setPosition] = useState(null);
+function LocationMarker({ position, setPosition }) {
   const map = useMap();
 
   const handleOnLocationFound = (e) => {

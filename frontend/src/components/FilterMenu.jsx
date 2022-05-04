@@ -1,74 +1,50 @@
 import React from "react";
+import { motion } from "framer-motion";
+import Slider from "./Slider";
+import sports from "./sports";
 import "./FilterMenu.css";
 
-const sports = [
-  {
-    label: "Handball",
-    value: "handball",
-  },
-  {
-    label: "Fitness",
-    value: "fitness",
-  },
-  {
-    label: "Football",
-    value: "football",
-  },
-  {
-    label: "Rugby",
-    value: "rugby",
-  },
-  {
-    label: "Volley-ball",
-    value: "volley-ball",
-  },
-  {
-    label: "Pétanque",
-    value: "petanque",
-  },
-  {
-    label: "Tennis",
-    value: "tennis",
-  },
-  {
-    label: "Patinage",
-    value: "patinage",
-  },
-  {
-    label: "Skate",
-    value: "skate",
-  },
-  {
-    label: "Natation",
-    value: "natation",
-  },
-  {
-    label: "Basket-ball",
-    value: "basket-ball",
-  },
-];
-
 function FilterMenu(props) {
-  const { setSportSelected } = props;
+  const { sportsSelected, setSportsSelected, value, setValue } = props;
 
   const handleChange = (e) => {
-    setSportSelected(e.target.value);
+    if (sportsSelected.includes(e.target.value)) {
+      const index = sportsSelected.indexOf(e.target.value);
+      sportsSelected.splice(index, 1);
+      setSportsSelected([...sportsSelected]);
+    } else {
+      setSportsSelected([...sportsSelected, e.target.value]);
+    }
   };
 
   return (
-    <div className="FilterMenu">
-      <select name="sports" className="sports-select" onChange={handleChange}>
-        <option value="">-- Choisis ton activité --</option>
-        {/* Add a sort in order to sort the sports alphabetically */}
+    <motion.div
+      className="FilterMenu"
+      initial={{ y: 500 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      exit={{ y: 500 }}
+    >
+      <Slider value={value} setValue={setValue} />
+      {/* Add a sort in order to sort the sports alphabetically */}
+      {/* if a sport is passed as an url param, checked the checkbox corresponding to the sport with checked = {sportsSelected.includes(sport.value)} */}
+      <div className="checkbox-container">
         {sports
           .sort((a, b) => a.label.localeCompare(b.label))
           .map((sport) => (
-            <option key={sport.value} value={sport.value}>
-              {sport.label}
-            </option>
+            <div key={sport.value} className="checkbox-subcontainer">
+              <input
+                type="checkbox"
+                id={sport.value}
+                value={sport.value}
+                onChange={handleChange}
+                checked={sportsSelected.includes(sport.value)}
+              />
+              <label htmlFor={sport.value}>{sport.label}</label>
+            </div>
           ))}
-      </select>
-    </div>
+      </div>
+    </motion.div>
   );
 }
 

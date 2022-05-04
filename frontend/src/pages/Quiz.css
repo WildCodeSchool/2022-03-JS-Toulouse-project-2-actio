@@ -1,10 +1,37 @@
 .quiz-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  gap: 3rem;
+}
+.answer-section {
   display: flex;
-  background-color: #1a1a1d;
-  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
   flex-wrap: wrap;
-  gap: 2rem;
-  align-items: center;
+  flex-direction: column;
+}
+
+.table-result {
+  display: flex;
+  justify-content: center;
+}
+
+.quiz-return {
+  display: flex;
+  justify-content: center;
+  height: 3rem;
+}
+
+.show-result {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  border-radius: 0.5rem;
 }
 
 .quiz-container > h2 {
@@ -30,6 +57,18 @@ button:hover {
 .quiz-result-button {
   display: flex;
   justify-content: center;
-  padding: 0.5rem;
+  padding: 1rem;
   max-width: 320px;
+}
+
+.question-id {
+  color: #ffc857;
+}
+
+.current-answer {
+  color: #ffc857;
+}
+
+.tableResult {
+  color: #ffc857;
 }
