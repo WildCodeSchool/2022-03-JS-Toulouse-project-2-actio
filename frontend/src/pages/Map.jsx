@@ -19,7 +19,6 @@ function Map() {
 
   // position corresponds to the coordinates of the user. We initialize it with the coordinates of Toulouse
   const [position, setPosition] = useState({ lat: 43.604652, lng: 1.444209 });
-
   // if we get a sport as an url param we set this sport to the sport selected
   const { sport } = useParams();
 

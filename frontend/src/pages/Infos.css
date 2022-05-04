@@ -12,12 +12,13 @@ html,
   background-color: #1a1a1d;
   font-family: "Nunito", sans-serif;
   height: 100%;
+  width: 100%;
 }
 
 .Infos .chosenSport-picture {
-  background-image: url("/src/assets/patinoire.jpeg");
+  background-image: center;
   background-size: cover;
-  height: 100%;
+  width: 100%;
 }
 
 .Infos .location-name {
@@ -47,20 +48,19 @@ html,
   flex-direction: column;
 }
 
-.Infos .location-details {
+.Infos .fas location-details fa-xs {
   display: flex;
   text-align: initial;
   align-items: center;
-  gap: 1rem;
 }
 
-.Infos .phone-details {
+.Infos .fas phone-details fa-xs {
   color: #ffc857;
   display: flex;
   gap: 1rem;
 }
 
-.Infos .web-icone {
+.Infos .fas web-icone fa-xs {
   color: #ffc857;
   display: flex;
   align-items: center;
@@ -85,7 +85,7 @@ html,
 
   .Infos .chosenSport-picture {
     display: flex;
-    width: 50%;
+    object-fit: cover;
     height: 100%;
   }
 
@@ -94,8 +94,9 @@ html,
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    background-position: right;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     height: 100%;
   }
 
