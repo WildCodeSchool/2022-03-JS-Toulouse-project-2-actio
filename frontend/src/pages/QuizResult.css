@@ -2,21 +2,30 @@
   color: #ffc857;
   background-color: #1a1a1d;
   box-sizing: border-box;
+  padding-top: 0.5rem;
 }
 
 .quiz-result .sport-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
   margin: 1.5rem 0;
 }
 
+.sport-container .navlink-sport {
+  text-decoration: none;
+}
+
 @media screen and (min-width: 768px) {
+  .quiz-result {
+    padding-top: 4rem;
+  }
+
   .quiz-result .sport-container {
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 5rem auto;
-    max-width: 85ch;
+    margin: 8rem auto;
+    width: 65ch;
   }
 }
