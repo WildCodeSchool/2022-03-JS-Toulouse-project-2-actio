@@ -1,18 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Infos.css";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import axios from "axios";
+import { useSearchParams } from "react-router-dom";
 
 function changeSportPicture(typeOfSport) {
-  if (typeOfSport === "basket-ball") {
-    return (
-      <img
-        className="chosenSport-picture"
-        src="/src/assets/basket.jpg"
-        alt="terrain de basket"
-      />
-    );
-  }
   if (typeOfSport === "tennis") {
     return (
       <img
@@ -58,16 +50,7 @@ function changeSportPicture(typeOfSport) {
       />
     );
   }
-  if (typeOfSport === "volley-ball") {
-    return (
-      <img
-        className="chosenSport-picture"
-        src="/src/assets/volleyball.jpg"
-        alt="terrain de volley-ball"
-      />
-    );
-  }
-  if (typeOfSport === "handball") {
+  if (typeOfSport === "gymnase") {
     return (
       <img
         className="chosenSport-picture"
@@ -112,29 +95,40 @@ function changeSportPicture(typeOfSport) {
   );
 }
 
-function Infos({ locationName, coordonnees, typeOfSport, phone, email }) {
+function Infos() {
   const [address, setAddress] = useState("");
+  const [searchParams] = useSearchParams();
+  const name = searchParams.get("name");
+  const coord = searchParams.get("coord");
+  const sport = searchParams.get("sport");
+  let newName = "";
+  const newCoord = coord.split(",").map((e) => parseFloat(e));
 
-  axios
-    .get(
-      `https://api-adresse.data.gouv.fr/reverse/?lon=${coordonnees[1]}&lat=${coordonnees[0]}`
-    )
-    .then((response) => {
-      setAddress(response.data.features[0].properties.label);
-    });
+  if (name.includes("|")) {
+    newName = name.split("|");
+  } else {
+    newName = [name];
+  }
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api-adresse.data.gouv.fr/reverse/?lon=${newCoord[1]}&lat=${newCoord[0]}`
+      )
+      .then((response) => {
+        setAddress(response.data.features[0].properties.label);
+      });
+  }, []);
 
   return (
     <div className="Infos">
-      <div className="chosenSport-picture">
-        {changeSportPicture(typeOfSport)}
-      </div>
+      <div className="chosenSport-picture">{changeSportPicture(sport)}</div>
 
       <div className="desktop-right">
         <div className="location-name">
           <h1 className="name">
-            <strong>{locationName}</strong>
+            <strong>{newName[0]}</strong>
           </h1>
-          <p className="description">Infrastructures de sports et loisirs</p>
         </div>
 
         <div className="location-infos">
@@ -152,7 +146,7 @@ function Infos({ locationName, coordonnees, typeOfSport, phone, email }) {
               alt="icone de téléphone"
               className="phone-icone"
             />
-            <p>{phone || "Problème pour récupérer les données"}</p>
+            <p>05 61 22 32 64</p>
           </div>
 
           <div className="fas web-icone fa-xs">
@@ -161,18 +155,18 @@ function Infos({ locationName, coordonnees, typeOfSport, phone, email }) {
               alt="icone de web"
               className="web-icone"
             />
-            <p>{email}</p>
+            <p>point.accueil.inscriptions@mairie-toulouse.fr</p>
           </div>
         </div>
 
         <div className="map">
-          <MapContainer center={coordonnees} zoom={13}>
+          <MapContainer center={newCoord} zoom={13}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               className="map-tiles"
             />
-            <Marker position={coordonnees} />
+            <Marker position={newCoord} />
           </MapContainer>
         </div>
       </div>

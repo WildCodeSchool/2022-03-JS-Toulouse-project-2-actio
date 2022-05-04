@@ -12,6 +12,14 @@
   padding: 1rem;
   flex-wrap: wrap;
   flex-direction: column;
+  font-size: 0px;
+  gap: 0.5rem;
+}
+.answer-section > button {
+  border-radius: 1rem;
+  size: 5rem;
+  height: 3rem;
+  font-size: 2rem;
 }
 
 .table-result {
@@ -23,6 +31,11 @@
   display: flex;
   justify-content: center;
   height: 3rem;
+  border-radius: 1rem;
+}
+
+.quiz-return > button {
+  border-radius: 1rem;
 }
 
 .show-result {
@@ -30,20 +43,37 @@
   justify-content: center;
 }
 
-button {
-  border-radius: 0.5rem;
-}
-
 .quiz-container > h2 {
   color: #ffc857;
+  padding-top: 5rem;
 }
 
 .score {
   color: #ffc857;
 }
 
+button {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: white;
+  border: 1px solid white;
+  outline: none;
+  transition: 0.5s ease-in-out;
+}
 button:hover {
-  background-color: #ffc857;
+  transition: 0.5s ease-in-out;
+  background: #ffc857;
+}
+
+button:hover svg {
+  stroke-dashoffset: -480;
+}
+
+button span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
 }
 
 .score-section {
@@ -59,6 +89,12 @@ button:hover {
   justify-content: center;
   padding: 1rem;
   max-width: 320px;
+  border-radius: 1rem;
+}
+
+.quiz-result-link {
+  text-decoration: none;
+  color: #1a1a1d;
 }
 
 .question-id {
@@ -71,4 +107,19 @@ button:hover {
 
 .tableResult {
   color: #ffc857;
+}
+
+@media screen and (min-width: 768px) {
+  .answer-section > button {
+    width: 50%;
+  }
+  .answer-section {
+    align-content: center;
+  }
+  .quiz-container > h2 {
+    margin-top: 8rem;
+  }
+  .quiz-container {
+    gap: 0;
+  }
 }
