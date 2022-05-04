@@ -13,6 +13,7 @@ const getInfos = async (sportsSelected, setSportInfos) => {
           name: `Court de tennis ${el.fields.index}`,
           coord: el.fields.geo_point_2d,
           key: el.recordid,
+          sport: "tennis",
         }));
       });
     infos = [...infos, ...res];
@@ -29,6 +30,7 @@ const getInfos = async (sportsSelected, setSportInfos) => {
           } | ${el.fields.adresse}`,
           coord: el.fields.geo_point_2d,
           key: el.recordid,
+          sport: "patinage",
         }));
       });
     infos = [...infos, ...res];
@@ -43,6 +45,7 @@ const getInfos = async (sportsSelected, setSportInfos) => {
           name: `Skatepark ${el.fields.index}`,
           coord: el.fields.geo_point_2d,
           key: el.recordid,
+          sport: "skate",
         }));
       });
     infos = [...infos, ...res];
@@ -57,6 +60,7 @@ const getInfos = async (sportsSelected, setSportInfos) => {
           name: `Piscine ${el.fields.index} | ${el.fields.telephone} | ${el.fields.adresse}`,
           coord: el.fields.geo_point_2d,
           key: el.recordid,
+          sport: "natation",
         }));
       });
     infos = [...infos, ...res];
@@ -71,6 +75,7 @@ const getInfos = async (sportsSelected, setSportInfos) => {
           name: `Boulodrome ${el.fields.index}`,
           coord: el.fields.geo_point_2d,
           key: el.recordid,
+          sport: "petanque",
         }));
       });
     infos = [...infos, ...res];
@@ -85,6 +90,7 @@ const getInfos = async (sportsSelected, setSportInfos) => {
           name: `Module de fitness ${pascalCase(el.fields.site)}`,
           coord: el.fields.geo_point_2d,
           key: el.recordid,
+          sport: "fitness",
         }));
       });
     infos = [...infos, ...res];
@@ -101,6 +107,7 @@ const getInfos = async (sportsSelected, setSportInfos) => {
             name: `Terrain de football ${el.fields.index}`,
             coord: el.fields.geo_point_2d,
             key: `foot_${el.recordid}`,
+            sport: "football",
           }));
       });
     infos = [...infos, ...res];
@@ -117,6 +124,7 @@ const getInfos = async (sportsSelected, setSportInfos) => {
             name: `Terrain de rugby ${el.fields.index}`,
             coord: el.fields.geo_point_2d,
             key: `rugby_${el.recordid}`,
+            sport: "rugby",
           }));
       });
     infos = [...infos, ...res];
@@ -135,6 +143,7 @@ const getInfos = async (sportsSelected, setSportInfos) => {
           name: `Gymnase ${el.fields.index}`,
           coord: el.fields.geo_point_2d,
           key: el.recordid,
+          sport: "gymnase",
         }));
       });
     infos = [...infos, ...res];
