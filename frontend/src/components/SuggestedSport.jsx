@@ -1,4 +1,5 @@
 import React from "react";
+import pascalCase from "./pascalCase";
 import "./SuggestedSport.css";
 
 function SuggestedSport(props) {
@@ -21,7 +22,7 @@ function SuggestedSport(props) {
   return (
     <div className="SuggestedSport">
       <img src={iconSport[sport]} alt={`icone ${sport}`} />
-      <p>{sport}</p>
+      <p>{pascalCase(sport)}</p>
     </div>
   );
 }
