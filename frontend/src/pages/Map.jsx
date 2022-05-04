@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { AnimatePresence } from "framer-motion";
 import LocationMarker from "../components/LocationMarker";
@@ -77,7 +77,14 @@ function Map() {
           )
           .map((sportInfo) => (
             <Marker key={sportInfo.key} position={sportInfo.coord} icon={Icon}>
-              <Popup>{sportInfo.name}</Popup>
+              <Popup>
+                {sportInfo.name} {" | "}
+                <Link
+                  to={`/infos?name=${sportInfo.name}&coord=${sportInfo.coord}&sport=${sportInfo.sport}`}
+                >
+                  Plus d&apos;infos
+                </Link>
+              </Popup>
             </Marker>
           ))}
         <LocationMarker position={position} setPosition={setPosition} />
