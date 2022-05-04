@@ -6,7 +6,7 @@ function reponseOfQuiz(tableOfResult) {
     tableOfResult[2] === "Oui" &&
     tableOfResult[3] === "Oui"
   ) {
-    result = ["fitness", "patinage", "natation"];
+    result = ["skate", "rugby", "handball"];
   }
   if (
     tableOfResult[0] === "15-50 ans" &&
@@ -38,7 +38,7 @@ function reponseOfQuiz(tableOfResult) {
     tableOfResult[2] === "Oui" &&
     tableOfResult[3] === "Oui"
   ) {
-    result = ["skate", "patinage", "natation", "fitness"];
+    result = ["skate", "natation", "fitness"];
   }
   if (
     tableOfResult[0] === "15-50 ans" &&
