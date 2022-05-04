@@ -15,7 +15,9 @@ import Navbar from "./components/Navbar";
 const selectedLocation = {
   name: "PATINOIRE BELLEVUE",
   coord: [43.5677782397, 1.45329380983],
-  type: "petanque",
+  type: "fitness",
+  phone: "05.61.22.32.64",
+  email: "point.accueil.inscriptions@mairie-toulouse.fr",
   key: "1",
 };
 
@@ -54,6 +56,8 @@ function App() {
                 locationName={selectedLocation.name}
                 coordonnees={selectedLocation.coord}
                 typeOfSport={selectedLocation.type}
+                phone={selectedLocation.phone}
+                email={selectedLocation.email}
               />
             }
           />

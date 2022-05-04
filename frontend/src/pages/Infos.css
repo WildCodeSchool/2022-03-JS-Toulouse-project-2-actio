@@ -48,20 +48,19 @@ html,
   flex-direction: column;
 }
 
-.Infos .location-details {
+.Infos .fas location-details fa-xs {
   display: flex;
   text-align: initial;
   align-items: center;
-  gap: 1rem;
 }
 
-.Infos .phone-details {
+.Infos .fas phone-details fa-xs {
   color: #ffc857;
   display: flex;
   gap: 1rem;
 }
 
-.Infos .web-icone {
+.Infos .fas web-icone fa-xs {
   color: #ffc857;
   display: flex;
   align-items: center;
@@ -86,7 +85,7 @@ html,
 
   .Infos .chosenSport-picture {
     display: flex;
-    object-fit: cover; 
+    object-fit: cover;
     height: 100%;
   }
 

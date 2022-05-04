@@ -53,7 +53,7 @@ function changeSportPicture(typeOfSport) {
     return (
       <img
         className="chosenSport-picture"
-        src="/src/assets/fitness.jpg"
+        src="/src/assets/fitness2.jpg"
         alt="salle de fitness"
       />
     );
@@ -99,14 +99,20 @@ function changeSportPicture(typeOfSport) {
       <img
         className="chosenSport-picture"
         src="/src/assets/rugby-post.jpg"
-        alt="terrain de rugby"
+        alt="rugby"
       />
     );
   }
-  return <img src="/src/assets/rugby-post.jpg" alt="terrain de rugby" />;
+  return (
+    <img
+      className="chosenSport-picture"
+      src="/src/assets/projecteur.jpg"
+      alt="projecteur"
+    />
+  );
 }
 
-function Infos({ locationName, coordonnees, typeOfSport }) {
+function Infos({ locationName, coordonnees, typeOfSport, phone, email }) {
   const [address, setAddress] = useState("");
 
   axios
@@ -132,7 +138,7 @@ function Infos({ locationName, coordonnees, typeOfSport }) {
         </div>
 
         <div className="location-infos">
-          <div className="location-details">
+          <div className="fas location-details fa-xs">
             <img
               src="/src/assets/location-icone.svg"
               alt="icone de localisation"
@@ -140,12 +146,13 @@ function Infos({ locationName, coordonnees, typeOfSport }) {
             <p>{address}</p>
           </div>
 
-          <div className="phone-details">
+          <div className="fas phone-details fa-xs">
             <img
               src="/src/assets/phone-icone.svg"
               alt="icone de téléphone"
               className="phone-icone"
             />
+            <p>{phone || "Problème pour récupérer les données"}</p>
           </div>
 
           <div className="fas web-icone fa-xs">
@@ -154,7 +161,7 @@ function Infos({ locationName, coordonnees, typeOfSport }) {
               alt="icone de web"
               className="web-icone"
             />
-            <p>non disponible</p>
+            <p>{email}</p>
           </div>
         </div>
 
