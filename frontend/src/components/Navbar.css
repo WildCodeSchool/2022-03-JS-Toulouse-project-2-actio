@@ -10,7 +10,7 @@ body {
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-  background-color: #fbfbfb;
+  background-color: #ffc857;
   display: flex;
   overflow-x: auto;
   z-index: 1000;

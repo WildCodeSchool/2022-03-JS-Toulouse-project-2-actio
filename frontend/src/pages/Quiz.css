@@ -52,8 +52,28 @@
   color: #ffc857;
 }
 
+button {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: white;
+  border: 1px solid white;
+  outline: none;
+  transition: 0.5s ease-in-out;
+}
 button:hover {
-  background-color: #ffc857;
+  transition: 0.5s ease-in-out;
+  background: #ffc857;
+}
+
+button:hover svg {
+  stroke-dashoffset: -480;
+}
+
+button span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
 }
 
 .score-section {
