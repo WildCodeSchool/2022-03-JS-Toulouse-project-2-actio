@@ -53,6 +53,17 @@ function Quiz() {
         <button type="button" onClick={() => handleReturnButtonCLick()}>
           Recommencer le quiz
         </button>
+        <div className="show-result">
+          {showResult ? (
+            <button type="button" className="quiz-article-button">
+              <NavLink className="quiz-article-link" to="/News">
+                Flemme de bouger ? Lis un article !
+              </NavLink>
+            </button>
+          ) : (
+            <p />
+          )}
+        </div>
       </div>
       <div className="show-result">
         {showResult ? (
@@ -62,17 +73,6 @@ function Quiz() {
               to={`/QuizResult/${sportResultStringed}`}
             >
               Voir les activités proposées
-            </NavLink>
-          </button>
-        ) : (
-          <p />
-        )}
-      </div>
-      <div className="show-result">
-        {showResult ? (
-          <button type="button" className="quiz-article-button">
-            <NavLink className="quiz-article-link" to="/News">
-              Flemme de bouger ? Lis un article !
             </NavLink>
           </button>
         ) : (
