@@ -4,7 +4,7 @@
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  gap: 3rem;
+  gap: 2rem;
 }
 .answer-section {
   display: flex;
@@ -54,8 +54,8 @@
 }
 
 button {
-  width: 180px;
-  height: 60px;
+  width: 15rem;
+  height: 4rem;
   cursor: pointer;
   background: white;
   border: 1px solid white;
@@ -73,10 +73,55 @@ button:hover svg {
 
 button span {
   color: white;
-  font-size: 18px;
+  font-size: 3rem;
   font-weight: 100;
 }
 
+.quiz-return > button {
+  height: 2rem;
+  background-color: #bc2c1a;
+  opacity: 0.5;
+}
+
+.quiz-result-button {
+  border-radius: 4px;
+  background-color: white;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 32px;
+  padding: 16px;
+  width: 220px;
+  transition: all 0.5s;
+  cursor: pointer;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+.quiz-result-button{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.quiz-result-button:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;  
+  top: 14px;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.quiz-result-button:hover{
+  padding-right: 24px;
+  padding-left:8px;
+}
+
+.quiz-result-button:hover:after {
+  opacity: 1;
+  right: 10px;
+}
 
 .score-section {
   color: #ffc857;
@@ -89,8 +134,12 @@ button span {
 .quiz-result-button {
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-size: larger;
+  font-weight: bold;
   padding: 1rem;
-  max-width: 320px;
+  width: 15rem;
+  height: 5rem;
   border-radius: 1rem;
 }
 
@@ -123,5 +172,8 @@ button span {
   }
   .quiz-container {
     gap: 0;
+  }
+  .quiz-return{
+    gap: 0
   }
 }
