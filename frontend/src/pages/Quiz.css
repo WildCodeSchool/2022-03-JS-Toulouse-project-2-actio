@@ -16,17 +16,6 @@
   gap: 0.5rem;
   align-items: center;
 }
-.answer-section > button {
-  border-radius: 1rem;
-  size: 5rem;
-  height: 3rem;
-  font-size: 2rem;
-}
-
-.table-result {
-  display: flex;
-  justify-content: center;
-}
 
 .quiz-return {
   display: flex;
@@ -53,82 +42,35 @@
   color: #ffc857;
 }
 
-button {
+.answer-section > button {
+  border-radius: 1rem;
+  size: 5rem;
+  height: 3rem;
+  font-size: 1.5rem;
   width: 15rem;
-  height: 4rem;
-  cursor: pointer;
-  background: white;
-  border: 1px solid white;
-  outline: none;
-  transition: 0.5s ease-in-out;
-}
-button:hover {
-  transition: 0.5s ease-in-out;
-  background: #ffc857;
 }
 
-button:hover svg {
-  stroke-dashoffset: -480;
-}
-
-button span {
-  color: white;
-  font-size: 3rem;
-  font-weight: 100;
+.answer-section > button:hover {
+  transition: 0.5s ease-in-out;
+  background-color: #ffc857;
 }
 
 .quiz-return > button {
-  height: 2rem;
-  background-color: #bc2c1a;
-  opacity: 0.5;
+  height: 3rem;
+  width: 10rem;
+  background-color: #EC6953;
+  opacity: 0.8;
 }
 
-.quiz-result-button {
-  border-radius: 4px;
-  background-color: white;
-  border: none;
-  color: #fff;
-  text-align: center;
-  font-size: 32px;
-  padding: 16px;
-  width: 220px;
-  transition: all 0.5s;
-  cursor: pointer;
-  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+.quiz-return > button:hover {
+  transform: scale(0.8);
+  transition: 1s ease-in-out;
 }
 
-.quiz-result-button{
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.quiz-result-button:after {
-  content: '»';
-  position: absolute;
-  opacity: 0;  
-  top: 14px;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.quiz-result-button:hover{
-  padding-right: 24px;
-  padding-left:8px;
-}
-
-.quiz-result-button:hover:after {
-  opacity: 1;
-  right: 10px;
-}
-
-.score-section {
-  color: #ffc857;
-}
-
-.show-score {
-  color: #ffc857;
+.quiz-result-button:hover {
+  transform: scale(1.54);
+  background: #ffc857;
+  transition: 1s ease-in-out;
 }
 
 .quiz-result-button {
@@ -173,7 +115,7 @@ button span {
   .quiz-container {
     gap: 0;
   }
-  .quiz-return{
-    gap: 0
+  .quiz-return {
+    gap: 0;
   }
 }
