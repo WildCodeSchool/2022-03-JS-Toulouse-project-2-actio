@@ -68,6 +68,17 @@ function Quiz() {
           <p />
         )}
       </div>
+      <div className="show-result">
+        {showResult ? (
+          <button type="button" className="quiz-article-button">
+            <NavLink className="quiz-article-link" to="/News">
+              Flemme de bouger ? Lis un article !
+            </NavLink>
+          </button>
+        ) : (
+          <p />
+        )}
+      </div>
     </div>
   );
 }

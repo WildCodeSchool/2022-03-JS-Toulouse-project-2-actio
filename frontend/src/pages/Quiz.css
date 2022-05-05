@@ -73,6 +73,25 @@
   transition: 1s ease-in-out;
 }
 
+.quiz-article-button:hover {
+  transform: scale(1.54);
+  background: #ffc857;
+  transition: 1s ease-in-out;
+}
+
+.quiz-article-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  font-weight: bold;
+  padding: 1rem;
+  width: 15rem;
+  height: 5rem;
+  border-radius: 1rem;
+  text-decoration: none;
+}
+
 .quiz-result-button {
   display: flex;
   justify-content: center;
@@ -83,6 +102,11 @@
   width: 15rem;
   height: 5rem;
   border-radius: 1rem;
+}
+
+.quiz-article-link {
+  text-decoration: none;
+  color: #1a1a1d;
 }
 
 .quiz-result-link {

@@ -5,7 +5,7 @@ import NewsGenerator from "../components/NewsGenerator";
 
 function News() {
   const [news, SetNews] = useState([]);
-  const [otherNews, SetOtherNews] = useState("Google");
+  const [otherNews, SetOtherNews] = useState("Basket");
   const [value, SetValue] = useState("");
 
   useEffect(() => {
@@ -45,11 +45,11 @@ function News() {
         />
       ))}
       <form onSubmit={handleClick}>
-        <label htmlFor="newsSearch">
-          Search :
+        <label className="form-search" htmlFor="newsSearch">
+          Search
           <input type="text" value={value} onChange={handleChange} />
         </label>
-        <input type="submit" value="Yes" />
+        <input type="submit" value="Go" />
       </form>
     </div>
   );
