@@ -101,6 +101,9 @@ function Infos() {
   const name = searchParams.get("name");
   const coord = searchParams.get("coord");
   const sport = searchParams.get("sport");
+  const locationId = searchParams.get("id");
+  const fav = searchParams.get("fav");
+  const favBool = fav === "true";
   let newName = "";
   const newCoord = coord.split(",").map((e) => parseFloat(e));
 
@@ -120,15 +123,36 @@ function Infos() {
       });
   }, []);
 
+  const [favourite, setFavourite] = useState(favBool);
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:5000/api/favourite-locations/${locationId}`)
+  //     .then(() => setFavourite(true));
+  // }, []);
+
+  const handleFavourite = () => {
+    if (favourite) {
+      axios.delete(
+        `http://localhost:5000/api/favourite-locations/${locationId}`
+      );
+    } else {
+      axios.post("http://localhost:5000/api/favourite-locations", {
+        locationId,
+        favourite: !favourite,
+      });
+    }
+    setFavourite(!favourite);
+  };
+
   return (
     <div className="Infos">
       <div className="chosenSport-picture">{changeSportPicture(sport)}</div>
 
       <div className="desktop-right">
         <div className="location-name">
-          <h1 className="name">
+          <h2 className="name">
             <strong>{newName[0]}</strong>
-          </h1>
+          </h2>
         </div>
 
         <div className="location-infos">
@@ -160,12 +184,19 @@ function Infos() {
         </div>
 
         <div className="map">
-          <MapContainer center={newCoord} zoom={13}>
+          <MapContainer center={newCoord} zoom={15}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               className="map-tiles"
             />
+            <button
+              className="btn-favourite"
+              onClick={handleFavourite}
+              type="submit"
+            >
+              {favourite ? "♥" : "♡"}
+            </button>
             <Marker position={newCoord} />
           </MapContainer>
         </div>

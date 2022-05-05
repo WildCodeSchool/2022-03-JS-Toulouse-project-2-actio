@@ -1,12 +1,12 @@
-DROP TABLE IF EXISTS favourite_sports;
+DROP TABLE IF EXISTS favourite_locations;
 
-CREATE TABLE `favourite_sports`
+CREATE TABLE `favourite_locations`
 (
   `id` int NOT NULL AUTO_INCREMENT,
-  `sport_id` varchar(255) NOT NULL,
+  `location_id` varchar(255) NOT NULL,
   `favourite` tinyint(1) NOT NULL,
   PRIMARY KEY(`id`)
 );
 
 
-INSERT INTO favourite_sports (id, sport_id, favourite) VALUES (1, 'abc123', true);
+INSERT INTO favourite_locations (id, location_id, favourite) VALUES (1, 'abc123', true);

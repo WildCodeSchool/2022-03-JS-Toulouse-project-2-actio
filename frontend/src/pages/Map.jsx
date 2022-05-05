@@ -7,6 +7,7 @@ import SwitchMapListFilter from "../components/SwitchMapListFilter";
 import FilterMenu from "../components/FilterMenu";
 import distance from "../components/distance";
 import getInfos from "../components/getInfos";
+import getFavouriteLocations from "../components/getFavouriteLocations";
 import Icon from "../components/Icon";
 import "./Map.css";
 
@@ -31,6 +32,14 @@ function Map() {
   useEffect(() => {
     getInfos(sportsSelected, setSportInfos);
   }, [sportsSelected]);
+
+  const [favouriteLocations, setFavouriteLocations] = useState([]);
+  useEffect(() => {
+    getFavouriteLocations(setFavouriteLocations);
+  }, []);
+  const idFavouriteLocations = favouriteLocations.map(
+    (favouriteLocation) => favouriteLocation.location_id
+  );
 
   // Define a value for the slider, by default set to 2 km
   const [value, setValue] = useState(2);
@@ -81,10 +90,23 @@ function Map() {
               <Popup>
                 {sportInfo.name} {" | "}
                 <Link
-                  to={`/infos?name=${sportInfo.name}&coord=${sportInfo.coord}&sport=${sportInfo.sport}`}
+                  to={`/infos?name=${sportInfo.name}&coord=${
+                    sportInfo.coord
+                  }&sport=${sportInfo.sport}&id=${
+                    sportInfo.key
+                  }&fav=${idFavouriteLocations.includes(sportInfo.key)}`}
                 >
                   Plus d&apos;infos
                 </Link>
+                {idFavouriteLocations.includes(sportInfo.key) ? (
+                  <>
+                    {" "}
+                    |{" "}
+                    <span style={{ color: "red", fontSize: "1rem" }}>
+                      &hearts;
+                    </span>
+                  </>
+                ) : null}
               </Popup>
             </Marker>
           ))}
