@@ -1,0 +1,6 @@
+.news {
+  display: flex;
+  flex-direction: column;
+  color: antiquewhite;
+  border: 1rem;
+}

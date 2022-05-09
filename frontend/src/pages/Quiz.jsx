@@ -50,9 +50,24 @@ function Quiz() {
         ))}
       </div>
       <div className="quiz-return">
-        <button type="button" onClick={() => handleReturnButtonCLick()}>
+        <button
+          type="button"
+          className="quiz-return-button"
+          onClick={() => handleReturnButtonCLick()}
+        >
           Recommencer le quiz
         </button>
+        <div className="show-result">
+          {showResult ? (
+            <button type="button" className="quiz-article-button">
+              <NavLink className="quiz-article-link" to="/News">
+                Flemme de bouger ? Lis un article !
+              </NavLink>
+            </button>
+          ) : (
+            <p />
+          )}
+        </div>
       </div>
       <div className="show-result">
         {showResult ? (
