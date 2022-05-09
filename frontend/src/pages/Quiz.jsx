@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import "./Quiz.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import question from "../components/question";
 import reponseOfQuiz from "../components/reponseOfQuiz";
 import QuizResult from "./QuizResult";
@@ -32,6 +32,7 @@ function Quiz() {
     setCurrentQuestion(0);
     setDisable(false);
     setTableOfResult([]);
+    setShowResult(false);
   };
 
   return (
