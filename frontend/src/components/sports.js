@@ -43,6 +43,10 @@ const sports = [
     label: "Basket-ball",
     value: "basketball",
   },
+  {
+    label: "Apero",
+    value: "apero",
+  },
 ];
 
 export default sports;
