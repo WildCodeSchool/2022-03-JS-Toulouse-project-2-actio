@@ -30,7 +30,7 @@ function reponseOfQuiz(tableOfResult) {
     tableOfResult[2] === "Non" &&
     tableOfResult[3] === "Non"
   ) {
-    result = ["volley-ball", "petanque", "tennis"];
+    result = ["volleyball", "petanque", "tennis"];
   }
   if (
     tableOfResult[0] === "15-50 ans" &&
@@ -78,7 +78,7 @@ function reponseOfQuiz(tableOfResult) {
     tableOfResult[2] === "Oui" &&
     tableOfResult[3] === "Non"
   ) {
-    result = ["petanque", "tennis", "volley-ball"];
+    result = ["petanque", "tennis", "volleyball"];
   }
   if (
     tableOfResult[0] === "50+ ans" &&

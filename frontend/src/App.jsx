@@ -7,6 +7,7 @@ import QuizResult from "./pages/QuizResult";
 import Infos from "./pages/Infos";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import News from "./pages/News";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/Quiz" element={<Quiz />} />
           <Route path="/QuizResult/:result" element={<QuizResult />} />
           <Route path="/Infos" element={<Infos />} />
+          <Route path="/News" element={<News />} />
         </Routes>
         <Navbar />
       </div>
