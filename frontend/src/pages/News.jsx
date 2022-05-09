@@ -4,9 +4,9 @@ import axios from "axios";
 import NewsGenerator from "../components/NewsGenerator";
 
 function News() {
-  const [news, SetNews] = useState([]);
-  const [otherNews, SetOtherNews] = useState("Basket");
-  const [value, SetValue] = useState("");
+  const [news, setNews] = useState([]);
+  const [otherNews, setOtherNews] = useState("Basket");
+  const [value, setValue] = useState("");
 
   useEffect(() => {
     const options = {
@@ -20,17 +20,17 @@ function News() {
     };
 
     axios.request(options).then((response) => {
-      SetNews(response.data.articles);
+      setNews(response.data.articles);
     });
   }, [otherNews]);
 
   function handleClick(e) {
     e.preventDefault();
-    SetOtherNews(value);
+    setOtherNews(value);
   }
 
   function handleChange(e) {
-    SetValue(e.target.value);
+    setValue(e.target.value);
   }
 
   return (
