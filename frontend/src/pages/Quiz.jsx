@@ -50,7 +50,11 @@ function Quiz() {
         ))}
       </div>
       <div className="quiz-return">
-        <button type="button" onClick={() => handleReturnButtonCLick()}>
+        <button
+          type="button"
+          className="quiz-return-button"
+          onClick={() => handleReturnButtonCLick()}
+        >
           Recommencer le quiz
         </button>
         <div className="show-result">
