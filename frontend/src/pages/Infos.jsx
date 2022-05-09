@@ -86,6 +86,16 @@ function changeSportPicture(typeOfSport) {
       />
     );
   }
+  if (typeOfSport === "apero") {
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/bar-toulouse2.jpg"
+        alt="bar de Toulouse"
+      />
+    );
+  }
+
   return (
     <img
       className="chosenSport-picture"
@@ -146,7 +156,11 @@ function Infos() {
               alt="icone de téléphone"
               className="phone-icone"
             />
-            <p>05 61 22 32 64</p>
+            <p>
+              {newName[0].includes("BAR")
+                ? "05.61.22.22.22 (Allo Toulouse)"
+                : "05.61.22.32.64 (service des sports)"}
+            </p>
           </div>
 
           <div className="fas web-icone fa-xs">
@@ -155,7 +169,11 @@ function Infos() {
               alt="icone de web"
               className="web-icone"
             />
-            <p>point.accueil.inscriptions@mairie-toulouse.fr</p>
+            <p>
+              {newName[0].includes("BAR")
+                ? "https://www.pagesjaunes.fr/annuaire/toulouse-31/bar"
+                : "point.accueil.inscriptions@mairie-toulouse.fr"}
+            </p>
           </div>
         </div>
 

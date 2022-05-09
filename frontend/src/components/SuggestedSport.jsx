@@ -17,8 +17,8 @@ function SuggestedSport(props) {
     skate: "/src/assets/icon-skate.png",
     tennis: "/src/assets/icon-tennis.png",
     volleyball: "/src/assets/icon-volleyball.png",
+    apero: "/src/assets/chope-a-biere.png",
   };
-
   return (
     <div className="SuggestedSport">
       <img src={iconSport[sport]} alt={`icone ${sport}`} />
