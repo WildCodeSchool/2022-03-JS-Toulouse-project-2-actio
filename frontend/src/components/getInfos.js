@@ -10,7 +10,7 @@ const getInfos = async (sportsSelected, setSportInfos) => {
       )
       .then((response) => {
         return response.data.records.map((el) => ({
-          name: `BAR ${el.fields.eq_nom_equipement}`,
+          name: `Bar ${pascalCase(el.fields.eq_nom_equipement)}`,
           coord: el.fields.geo_point_2d,
           key: el.recordid,
           sport: "apero",
