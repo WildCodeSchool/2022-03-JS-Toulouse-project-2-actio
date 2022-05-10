@@ -4,6 +4,10 @@
     saturate(0.3) brightness(0.5);
 }
 
+.brand-title {
+  color: #ffc857;
+}
+
 .Map {
   background-color: #1a1a1d;
   height: 100%;

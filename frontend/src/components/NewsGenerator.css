@@ -1,6 +1,17 @@
 .news {
   display: flex;
   flex-direction: column;
-  color: antiquewhite;
-  border: 1rem;
+  color: #ffc857;
+  margin: 1rem;
+  margin-top: 5rem;
+  border: solid;
+}
+
+@media screen and (min-width: 740px) {
+  .news {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15rem;
+  }
 }

@@ -69,11 +69,16 @@ function Map() {
       </AnimatePresence>
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
         {/* Add the className map-tiles to style the map in dark */}
+
+        <div className="brand-title">
+          <h1>Actio</h1>
+        </div>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           className="map-tiles"
         />
+
         {/* Once we get the different locations from the API display marker on the map */}
         {sportInfos
           .filter(
