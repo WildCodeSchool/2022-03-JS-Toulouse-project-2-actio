@@ -13,7 +13,7 @@ body {
   background-color: #ffc857;
   display: flex;
   overflow-x: auto;
-  z-index: 1000;
+  z-index: 2;
 }
 
 .nav__link {

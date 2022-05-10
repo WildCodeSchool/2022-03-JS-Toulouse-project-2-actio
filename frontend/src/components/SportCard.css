@@ -1,0 +1,36 @@
+.SportCard{
+  height: 6rem;
+  width: 80%;
+  padding: 1rem;
+  border-radius: 2rem;
+  background-color: white;
+  text-align: start;
+  display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: repeat(2, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+.SportCard__info {
+  grid-area: 1 / 2 / 2 / 4;
+}
+
+.SportCard h1{
+  font-size: 1.2rem;
+}
+
+.SportCard map{
+  grid-area: 1 / 1 / 2 / 2;
+}
+.SportCard__mini-map {
+  overflow: hidden;
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 1rem;
+}
+
+.SportCard .leaflet-control-container{
+  display: none;
+}

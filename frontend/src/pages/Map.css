@@ -4,6 +4,11 @@
     saturate(0.3) brightness(0.5);
 }
 
+.Map {
+  background-color: #1a1a1d;
+  height: 100%;
+}
+
 /* Style the class map-tiles wwith a filter set to the variable map-tiles-filter */
 .Map .map-tiles {
   filter: var(--map-tiles-filter, none);
@@ -11,5 +16,6 @@
 
 /* Set the height of the map container to be able to display the map */
 .Map .leaflet-container {
-  height: 100vh;
+  height: 100%;
+  z-index: 1;
 }

@@ -7,6 +7,7 @@ import LocationMarker from "../components/LocationMarker";
 import SwitchMapListFilter from "../components/SwitchMapListFilter";
 import FilterMenu from "../components/FilterMenu";
 import distance from "../components/distance";
+import List from "../components/List";
 import getFavouriteLocations from "../components/getFavouriteLocations";
 import Icon from "../components/Icon";
 import "./Map.css";
@@ -43,11 +44,16 @@ function Map() {
   // We create a state to display or not the FilterMenu component
   const [showFilter, setShowFilter] = useState(false);
 
+  // We create a state to display or not the List component
+  const [showList, setShowList] = useState(false);
+
   return (
     <div className="Map">
       <SwitchMapListFilter
         showFilter={showFilter}
         setShowFilter={setShowFilter}
+        showList={showList}
+        setShowList={setShowList}
       />
       {/* the tag AnimatePresence is to animate the FilterMenu component when it is unmounted thanks to the library framer-motion */}
       <AnimatePresence>
@@ -59,6 +65,7 @@ function Map() {
             setValue={setValue}
           />
         ) : null}
+        {showList ? <List sports={sportInfos} position={position} /> : null}
       </AnimatePresence>
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
         {/* Add the className map-tiles to style the map in dark */}

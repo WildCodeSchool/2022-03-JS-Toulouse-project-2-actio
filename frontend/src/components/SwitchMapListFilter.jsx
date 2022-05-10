@@ -2,9 +2,17 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./SwitchMapListFilter.css";
 
-export default function SwitchMapListFilter({ showFilter, setShowFilter }) {
+export default function SwitchMapListFilter({
+  showFilter,
+  setShowFilter,
+  showList,
+  setShowList,
+}) {
   const handleFilterClick = () => {
     setShowFilter(!showFilter);
+  };
+  const handleListClick = () => {
+    setShowList(!showList);
   };
 
   return (
@@ -19,16 +27,17 @@ export default function SwitchMapListFilter({ showFilter, setShowFilter }) {
       <NavLink className="switch__label" htmlFor="mySwitch1" to="/map">
         Map
       </NavLink>
-      <input
-        className="switch__input"
-        type="radio"
-        value="list"
-        name="map"
-        id="mySwitch2"
-      />
-      <NavLink className="switch__label" htmlFor="mySwitch2" to="/list">
+      <label htmlFor="mySwitch2" className="switch__label">
+        <input
+          className="switch__input"
+          type="radio"
+          value="list"
+          name="map"
+          id="mySwitch2"
+          onClick={handleListClick}
+        />
         List
-      </NavLink>
+      </label>
       <label htmlFor="mySwitch3" className="switch__label">
         <input
           className="switch__input"
