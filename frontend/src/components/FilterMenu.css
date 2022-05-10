@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 1.5rem;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   height: calc(100vh - 25% - 35.5px);
   top: calc(25% + 35.5px);
