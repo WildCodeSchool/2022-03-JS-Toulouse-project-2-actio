@@ -7,7 +7,6 @@ import LocationMarker from "../components/LocationMarker";
 import SwitchMapListFilter from "../components/SwitchMapListFilter";
 import FilterMenu from "../components/FilterMenu";
 import distance from "../components/distance";
-// import getInfos from "../components/getInfos";
 import getFavouriteLocations from "../components/getFavouriteLocations";
 import Icon from "../components/Icon";
 import "./Map.css";
@@ -15,11 +14,6 @@ import "./Map.css";
 function Map() {
   const { sportsSelected, setSportsSelected, sportInfos } =
     useContext(SportContext);
-  // // sportsSelected is to know which sport has been selected by the user using the filter
-  // const [sportsSelected, setSportsSelected] = useState([]);
-
-  // // sportInfos are the data that we retrieve from the APIs (coordinates & name of the place)
-  // const [sportInfos, setSportInfos] = useState([]);
 
   // position corresponds to the coordinates of the user. We initialize it with the coordinates of Toulouse
   const [position, setPosition] = useState({ lat: 43.604652, lng: 1.444209 });
@@ -31,10 +25,6 @@ function Map() {
       setSportsSelected([sport]);
     }
   }, []);
-
-  // useEffect(() => {
-  //   getInfos(sportsSelected, setSportInfos);
-  // }, [sportsSelected]);
 
   const [favouriteLocations, setFavouriteLocations] = useState([]);
   useEffect(() => {
