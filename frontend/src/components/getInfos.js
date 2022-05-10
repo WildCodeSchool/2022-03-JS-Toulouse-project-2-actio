@@ -6,7 +6,7 @@ const getInfos = async (sportsSelected, setSportInfos) => {
   if (sportsSelected.includes("apero")) {
     const res = await axios
       .get(
-        "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=cafes-concerts&q="
+        "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=cafes-concerts&q=&rows=30"
       )
       .then((response) => {
         return response.data.records.map((el) => ({
