@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import "./SwitchMapListFilter.css";
 
 export default function SwitchMapListFilter({
@@ -18,16 +17,6 @@ export default function SwitchMapListFilter({
   return (
     <div className="switch-wrapper">
       <div className="switch">
-        <input
-          className="switch__input"
-          type="radio"
-          value="map"
-          name="map"
-          id="mySwitchMap"
-        />
-        <NavLink className="switch__label" htmlFor="mySwitch1" to="/map">
-          Carte
-        </NavLink>
         <label htmlFor="mySwitchCarte" className="switch__label">
           <input
             className="switch__input"
