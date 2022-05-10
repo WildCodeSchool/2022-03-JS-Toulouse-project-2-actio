@@ -32,43 +32,21 @@ html,
 .Infos .name {
   font-size: 1.8rem;
   display: flex;
-  margin-top: 0.6rem 0 0 0;
-}
-
-.Infos .description {
-  display: flex;
-  margin: 0 0 2.5rem 0;
+  margin-top: 0.6rem;
 }
 
 .Infos .location-infos {
-  font-size: 0.8em;
+  font-size: 1rem;
   margin: 0 2rem;
   color: #ffc857;
   display: flex;
   flex-direction: column;
 }
 
-.Infos .fas location-details fa-xs {
-  display: flex;
-  text-align: initial;
-  align-items: center;
-}
-
-.Infos .fas phone-details fa-xs {
-  color: #ffc857;
-  display: flex;
-  gap: 1rem;
-}
-
-.Infos .fas web-icone fa-xs {
-  color: #ffc857;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
 .Infos .leaflet-container {
-  margin: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 75px;
   height: 140px;
 }
 

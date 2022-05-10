@@ -157,9 +157,7 @@ function Infos() {
               className="phone-icone"
             />
             <p>
-              {newName[0].includes("BAR")
-                ? "05.61.22.22.22 (Allo Toulouse)"
-                : "05.61.22.32.64 (service des sports)"}
+              {newName[0].includes("BAR") ? "05.61.22.22.22" : "05.61.22.32.64"}
             </p>
           </div>
 
