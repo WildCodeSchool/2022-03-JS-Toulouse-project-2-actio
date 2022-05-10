@@ -17,4 +17,5 @@
 /* Set the height of the map container to be able to display the map */
 .Map .leaflet-container {
   height: 100%;
+  z-index: 1;
 }
