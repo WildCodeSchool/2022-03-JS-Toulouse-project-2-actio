@@ -7,6 +7,10 @@
   border: solid;
 }
 
+.news > a {
+  color: #ffc857;
+}
+
 @media screen and (min-width: 740px) {
   .news {
     display: flex;
