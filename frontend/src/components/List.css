@@ -9,7 +9,7 @@
   background-color: #1a1a1d51;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  overflow: auto;
+  overflow: 100%;
 }
 
 .List__Cards{

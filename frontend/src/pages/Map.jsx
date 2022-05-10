@@ -36,7 +36,7 @@ function Map() {
   );
 
   // Define a value for the slider, by default set to 2 km
-  const [value, setValue] = useState(2);
+  const [value, setValue] = useState(5);
 
   // Set a radius to display markers within this radius in kilometers
   const radius = value;

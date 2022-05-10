@@ -10,13 +10,13 @@ export default function Navbar() {
       <li className="nav__link">
         <FaHome />
         <NavLink className="nav__text" to="/">
-          Home
+          Accueil
         </NavLink>
       </li>
       <li className="nav__link">
         <FaMap />
         <NavLink className="nav__text" to="/map">
-          Map
+          Carte
         </NavLink>
       </li>
       <li className="nav__link">

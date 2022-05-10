@@ -16,7 +16,12 @@ body {
   z-index: 2;
 }
 
-.nav__link {
+.nav__text {
+  text-decoration: none;
+  color: black;
+}
+
+.nav__link{
   display: flex;
   flex-direction: column;
   align-items: center;
