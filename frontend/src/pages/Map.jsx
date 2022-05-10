@@ -49,6 +49,7 @@ function Map() {
 
   return (
     <div className="Map">
+      <h1 className="brand-title">Actio</h1>
       <SwitchMapListFilter
         showFilter={showFilter}
         setShowFilter={setShowFilter}
@@ -69,10 +70,6 @@ function Map() {
       </AnimatePresence>
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
         {/* Add the className map-tiles to style the map in dark */}
-
-        <div className="brand-title">
-          <h1>Actio</h1>
-        </div>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
