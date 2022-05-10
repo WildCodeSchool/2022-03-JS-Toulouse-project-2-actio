@@ -17,6 +17,7 @@ body.home {
   background-size: cover; 
   background-position: center;
   height: 100vh;
+  overflow: hidden;
 }
 
 .home__text {
