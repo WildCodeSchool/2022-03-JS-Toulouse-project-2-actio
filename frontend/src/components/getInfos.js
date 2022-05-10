@@ -3,6 +3,21 @@ import pascalCase from "./pascalCase";
 
 const getInfos = async (sportsSelected, setSportInfos) => {
   let infos = [];
+  if (sportsSelected.includes("apero")) {
+    const res = await axios
+      .get(
+        "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=cafes-concerts&q="
+      )
+      .then((response) => {
+        return response.data.records.map((el) => ({
+          name: `Bar ${pascalCase(el.fields.eq_nom_equipement)}`,
+          coord: el.fields.geo_point_2d,
+          key: el.recordid,
+          sport: "apero",
+        }));
+      });
+    infos = [...infos, ...res];
+  }
   if (sportsSelected.includes("tennis")) {
     const res = await axios
       .get(

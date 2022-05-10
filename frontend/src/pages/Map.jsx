@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { AnimatePresence } from "framer-motion";
+import { SportContext } from "../contexts/SportContext";
 import LocationMarker from "../components/LocationMarker";
 import SwitchMapListFilter from "../components/SwitchMapListFilter";
 import FilterMenu from "../components/FilterMenu";
 import distance from "../components/distance";
-import getInfos from "../components/getInfos";
 import List from "../components/List";
+import getFavouriteLocations from "../components/getFavouriteLocations";
 import Icon from "../components/Icon";
 import "./Map.css";
 
 function Map() {
-  // sportsSelected is to know which sport has been selected by the user using the filter
-  const [sportsSelected, setSportsSelected] = useState([]);
-
-  // sportInfos are the data that we retrieve from the APIs (coordinates & name of the place)
-  const [sportInfos, setSportInfos] = useState([]);
+  const { sportsSelected, setSportsSelected, sportInfos } =
+    useContext(SportContext);
 
   // position corresponds to the coordinates of the user. We initialize it with the coordinates of Toulouse
   const [position, setPosition] = useState({ lat: 43.604652, lng: 1.444209 });
@@ -29,9 +27,13 @@ function Map() {
     }
   }, []);
 
+  const [favouriteLocations, setFavouriteLocations] = useState([]);
   useEffect(() => {
-    getInfos(sportsSelected, setSportInfos);
-  }, [sportsSelected]);
+    getFavouriteLocations(setFavouriteLocations);
+  }, []);
+  const idFavouriteLocations = favouriteLocations.map(
+    (favouriteLocation) => favouriteLocation.location_id
+  );
 
   // Define a value for the slider, by default set to 2 km
   const [value, setValue] = useState(2);
@@ -53,6 +55,7 @@ function Map() {
         showList={showList}
         setShowList={setShowList}
       />
+      {/* the tag AnimatePresence is to animate the FilterMenu component when it is unmounted thanks to the library framer-motion */}
       <AnimatePresence>
         {showFilter ? (
           <FilterMenu
@@ -86,11 +89,16 @@ function Map() {
             <Marker key={sportInfo.key} position={sportInfo.coord} icon={Icon}>
               <Popup>
                 {sportInfo.name} {" | "}
-                <Link
-                  to={`/infos?name=${sportInfo.name}&coord=${sportInfo.coord}&sport=${sportInfo.sport}`}
-                >
-                  Plus d&apos;infos
-                </Link>
+                <Link to={`/infos?id=${sportInfo.key}`}>Plus d&apos;infos</Link>
+                {idFavouriteLocations.includes(sportInfo.key) ? (
+                  <>
+                    {" "}
+                    |{" "}
+                    <span style={{ color: "red", fontSize: "1rem" }}>
+                      &hearts;
+                    </span>
+                  </>
+                ) : null}
               </Popup>
             </Marker>
           ))}
