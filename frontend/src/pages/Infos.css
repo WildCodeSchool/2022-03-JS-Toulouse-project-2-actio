@@ -1,3 +1,14 @@
+/* Create a variable map-tiles-filter */
+:root {
+  --map-tiles-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg)
+    saturate(0.3) brightness(0.5);
+}
+
+/* Style the class map-tiles wwith a filter set to the variable map-tiles-filter */
+.Infos .map-tiles {
+  filter: var(--map-tiles-filter, none);
+}
+
 body,
 html,
 #root,
@@ -35,40 +46,28 @@ html,
   margin-top: 0.6rem;
 }
 
-.Infos .description {
-  display: flex;
-  margin: 0 0 2.5rem 0;
-}
-
 .Infos .location-infos {
-  font-size: 0.8em;
+  font-size: 1rem;
   margin: 0 2rem;
   color: #ffc857;
   display: flex;
   flex-direction: column;
 }
 
-.Infos .fas location-details fa-xs {
-  display: flex;
-  text-align: initial;
-  align-items: center;
+.phone-link {
+  color: #ffc857;
+  text-decoration: none;
 }
 
-.Infos .fas phone-details fa-xs {
+.mail-link {
   color: #ffc857;
-  display: flex;
-  gap: 1rem;
-}
-
-.Infos .fas web-icone fa-xs {
-  color: #ffc857;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  text-decoration: none;
 }
 
 .Infos .leaflet-container {
-  margin: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 75px;
   height: 140px;
 }
 
@@ -134,6 +133,7 @@ html,
 
   .Infos .name {
     font-size: 3rem;
+    margin-top: 3rem;
   }
 
   .Infos .map {
