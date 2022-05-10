@@ -70,7 +70,7 @@ function reponseOfQuiz(tableOfResult) {
     tableOfResult[2] === "Oui" &&
     tableOfResult[3] === "Oui"
   ) {
-    result = ["petanque", "tennis", "patinage"];
+    result = ["petanque", "tennis", "apero"];
   }
   if (
     tableOfResult[0] === "50+ ans" &&
@@ -78,7 +78,7 @@ function reponseOfQuiz(tableOfResult) {
     tableOfResult[2] === "Oui" &&
     tableOfResult[3] === "Non"
   ) {
-    result = ["petanque", "tennis", "volleyball"];
+    result = ["petanque", "football", "apero"];
   }
   if (
     tableOfResult[0] === "50+ ans" &&
@@ -86,7 +86,7 @@ function reponseOfQuiz(tableOfResult) {
     tableOfResult[2] === "Non" &&
     tableOfResult[3] === "Oui"
   ) {
-    result = ["tennis", "petanque", "patinage"];
+    result = ["tennis", "patinage", "apero"];
   }
   if (
     tableOfResult[0] === "50+ ans" &&
@@ -94,7 +94,7 @@ function reponseOfQuiz(tableOfResult) {
     tableOfResult[2] === "Non" &&
     tableOfResult[3] === "Non"
   ) {
-    result = ["tennis", "petanque"];
+    result = ["tennis", "petanque", "apero"];
   }
   if (
     tableOfResult[0] === "50+ ans" &&
@@ -102,7 +102,7 @@ function reponseOfQuiz(tableOfResult) {
     tableOfResult[2] === "Oui" &&
     tableOfResult[3] === "Oui"
   ) {
-    result = ["fitness", "patinage", "natation"];
+    result = ["apero", "patinage", "natation"];
   }
   if (
     tableOfResult[0] === "50+ ans" &&
@@ -110,7 +110,7 @@ function reponseOfQuiz(tableOfResult) {
     tableOfResult[2] === "Oui" &&
     tableOfResult[3] === "Non"
   ) {
-    result = ["fitness", "patinage", "natation"];
+    result = ["fitness", "apero", "natation"];
   }
   if (
     tableOfResult[0] === "50+ ans" &&
@@ -126,7 +126,7 @@ function reponseOfQuiz(tableOfResult) {
     tableOfResult[2] === "Non" &&
     tableOfResult[3] === "Non"
   ) {
-    result = ["fitness", "patinage", "natation"];
+    result = ["fitness", "apero", "natation"];
   }
 
   return result;

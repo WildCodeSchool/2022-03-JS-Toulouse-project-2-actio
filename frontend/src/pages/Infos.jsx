@@ -1,10 +1,114 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useSearchParams } from "react-router-dom";
+<<<<<<< HEAD
 import axios from "axios";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { SportContext } from "../contexts/SportContext";
 import ChangeSportPicture from "../components/ChangeSportPicture";
 import "./Infos.css";
+=======
+
+function changeSportPicture(typeOfSport) {
+  if (typeOfSport === "tennis") {
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/tennis.jpg"
+        alt="terrain de tennis"
+      />
+    );
+  }
+  if (typeOfSport === "patinage") {
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/patinoire.jpeg"
+        alt="patinoire"
+      />
+    );
+  }
+  if (typeOfSport === "skate") {
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/skatepark.jpg"
+        alt="skatepark"
+      />
+    );
+  }
+  if (typeOfSport === "petanque") {
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/pétanque.jpg"
+        alt="terrain de petanque"
+      />
+    );
+  }
+  if (typeOfSport === "fitness") {
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/fitness2.jpg"
+        alt="salle de fitness"
+      />
+    );
+  }
+  if (typeOfSport === "gymnase") {
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/handball.jpg"
+        alt="terrain de handball"
+      />
+    );
+  }
+  if (typeOfSport === "natation") {
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/piscine.jpg"
+        alt="piscine"
+      />
+    );
+  }
+  if (typeOfSport === "football") {
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/football.jpg"
+        alt="terrain de football"
+      />
+    );
+  }
+  if (typeOfSport === "rugby") {
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/rugby-post.jpg"
+        alt="rugby"
+      />
+    );
+  }
+  if (typeOfSport === "apero") {
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/bar-toulouse2.jpg"
+        alt="bar de Toulouse"
+      />
+    );
+  }
+
+  return (
+    <img
+      className="chosenSport-picture"
+      src="/src/assets/projecteur.jpg"
+      alt="projecteur"
+    />
+  );
+}
+>>>>>>> 8722f60c4c4c972e268b1ef1ff3bf4cd4fc69517
 
 function Infos() {
   const { sportInfos } = useContext(SportContext);
@@ -80,7 +184,11 @@ function Infos() {
               alt="icone de téléphone"
               className="phone-icone"
             />
-            <p>05 61 22 32 64</p>
+            <p>
+              {newName[0].includes("BAR")
+                ? "05.61.22.22.22 (Allo Toulouse)"
+                : "05.61.22.32.64 (service des sports)"}
+            </p>
           </div>
 
           <div className="fas web-icone fa-xs">
@@ -89,7 +197,11 @@ function Infos() {
               alt="icone de web"
               className="web-icone"
             />
-            <p>point.accueil.inscriptions@mairie-toulouse.fr</p>
+            <p>
+              {newName[0].includes("BAR")
+                ? "https://www.pagesjaunes.fr/annuaire/toulouse-31/bar"
+                : "point.accueil.inscriptions@mairie-toulouse.fr"}
+            </p>
           </div>
         </div>
 
