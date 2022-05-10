@@ -36,7 +36,7 @@ function Map() {
   );
 
   // Define a value for the slider, by default set to 2 km
-  const [value, setValue] = useState(2);
+  const [value, setValue] = useState(5);
 
   // Set a radius to display markers within this radius in kilometers
   const radius = value;
@@ -49,6 +49,7 @@ function Map() {
 
   return (
     <div className="Map">
+      <h1 className="brand-title">Actio</h1>
       <SwitchMapListFilter
         showFilter={showFilter}
         setShowFilter={setShowFilter}
@@ -74,6 +75,7 @@ function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           className="map-tiles"
         />
+
         {/* Once we get the different locations from the API display marker on the map */}
         {sportInfos
           .filter(

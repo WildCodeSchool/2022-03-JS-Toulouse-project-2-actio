@@ -4,6 +4,14 @@
     saturate(0.3) brightness(0.5);
 }
 
+.brand-title {
+  color: #ffc857;
+  position: absolute;
+  width: 100%;
+  z-index: 4;
+  font-style: italic;
+}
+
 .Map {
   background-color: #1a1a1d;
   height: 100%;

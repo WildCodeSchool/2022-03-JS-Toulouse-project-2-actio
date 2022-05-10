@@ -13,6 +13,11 @@
   padding: 1rem 0 1rem 1rem;
 }
 
+.SuggestedSport:hover {
+  transition: 0.5s ease-in-out;
+  background-color: #ffc857;
+}
+
 .SuggestedSport img {
   height: 100px;
   width: 100px;
