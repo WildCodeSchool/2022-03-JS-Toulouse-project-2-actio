@@ -32,7 +32,7 @@ html,
 .Infos .name {
   font-size: 1.8rem;
   display: flex;
-  margin-top: 0.6rem 0 0 0;
+  margin-top: 0.6rem;
 }
 
 .Infos .description {
@@ -72,6 +72,23 @@ html,
   height: 140px;
 }
 
+.btn-favourite {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  width: 1rem;
+  height: 1rem;
+  color: red;
+  font-size: 2rem;
+  top: 0px;
+  right: 20px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.btn-favourite:hover {
+  background-color: transparent;
+}
 /*----------- media queries desktop ------------ */
 
 @media screen and (min-width: 740px) {
