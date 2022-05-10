@@ -9,6 +9,13 @@
   filter: var(--map-tiles-filter, none);
 }
 
+body,
+html,
+#root,
+.App {
+  height: 100%;
+}
+
 .Infos {
   display: flex;
   flex-direction: column;
@@ -126,6 +133,7 @@
 
   .Infos .name {
     font-size: 3rem;
+    margin-top: 3rem;
   }
 
   .Infos .map {
