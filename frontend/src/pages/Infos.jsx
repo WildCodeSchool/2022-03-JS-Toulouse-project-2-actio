@@ -81,9 +81,15 @@ function Infos() {
               className="phone-icone"
             />
             <p>
-              {newName[0].includes("Bar")
-                ? "05.61.22.22.22 (Allo Toulouse)"
-                : "05.61.22.32.64 (service des sports)"}
+              {newName[0].includes("Bar") ? (
+                <a href="tel:05.61.22.22.22" className="phone-link">
+                  05.61.22.22.22
+                </a>
+              ) : (
+                <a href="tel:05.61.22.32.64" className="phone-link">
+                  05.61.22.32.64
+                </a>
+              )}
             </p>
           </div>
 
@@ -94,9 +100,21 @@ function Infos() {
               className="web-icone"
             />
             <p>
-              {newName[0].includes("Bar")
-                ? "https://www.pagesjaunes.fr/annuaire/toulouse-31/bar"
-                : "point.accueil.inscriptions@mairie-toulouse.fr"}
+              {newName[0].includes("Bar") ? (
+                <a
+                  href="https://www.pagesjaunes.fr/annuaire/toulouse-31/bar"
+                  className="mail-link"
+                >
+                  https://www.pagesjaunes.fr/annuaire/toulouse-31/bar
+                </a>
+              ) : (
+                <a
+                  href="mailto:point.accueil.inscriptions@mairie-toulouse.fr"
+                  className="mail-link"
+                >
+                  point.accueil.inscriptions@mairie-toulouse.fr
+                </a>
+              )}
             </p>
           </div>
         </div>

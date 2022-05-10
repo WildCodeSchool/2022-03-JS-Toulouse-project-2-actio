@@ -43,6 +43,16 @@ html,
   flex-direction: column;
 }
 
+.phone-link {
+  color: #ffc857;
+  text-decoration: none;
+}
+
+.mail-link {
+  color: #ffc857;
+  text-decoration: none;
+}
+
 .Infos .leaflet-container {
   margin-left: 2rem;
   margin-right: 2rem;
