@@ -4,6 +4,7 @@ import axios from "axios";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { SportContext } from "../contexts/SportContext";
 import ChangeSportPicture from "../components/ChangeSportPicture";
+import Icon from "../components/Icon";
 import "./Infos.css";
 
 function Infos() {
@@ -133,7 +134,7 @@ function Infos() {
             >
               {favourite ? "♥" : "♡"}
             </button>
-            <Marker position={sport.coord} />
+            <Marker position={sport.coord} icon={Icon} />
           </MapContainer>
         </div>
       </div>
