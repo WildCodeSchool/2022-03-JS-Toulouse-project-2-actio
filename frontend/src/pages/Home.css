@@ -39,11 +39,26 @@ body.home {
   font-family: "Nunito", sans-serif;
   font-weight: bold;
   animation: reveal 4s;
-  animation: slidein2 4s;
+  animation: slidein3 4s;
   padding-top: 5vh;
   display: flex;
   justify-content: center;
   animation-delay: 2s;
+}
+
+@keyframes slidein3 {
+  0% {
+    margin-top: 8000px;
+  }
+  20% {
+    margin-top: 8000px;
+  }
+  35% {
+    margin-top: 0 2rem;
+  }
+  100% {
+    margin-top: 0 2rem;
+  }
 }
 
 @keyframes slidein2 {
