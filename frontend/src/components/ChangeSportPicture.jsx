@@ -80,6 +80,15 @@ export default function ChangeSportPicture(typeOfSport) {
       />
     );
   }
+  if (typeOfSport === "apero") {
+    return (
+      <img
+        className="chosenSport-picture"
+        src="/src/assets/bar-toulouse2.jpg"
+        alt="bar de Toulouse"
+      />
+    );
+  }
   return (
     <img
       className="chosenSport-picture"
