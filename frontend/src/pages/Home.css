@@ -1,24 +1,115 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,900&display=swap");
+
+.brand-logo {
+  margin-top: 0;
+  animation: reveal 2s;
+  animation: slidein 2s;
+  font-family: "Nunito";
+  font-size: 6rem;
+  color: #ffc857;
+  font-style: italic;
+}
 
 body.home {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("https://images.unsplash.com/photo-1602263515015-dd72f8e9f301?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80");
-  background-size: cover;
+  background-size: cover; 
   background-position: center;
   height: 100vh;
-}
-
-.home__welcome {
-  padding-top: 15vh;
+  overflow: hidden;
 }
 
 .home__text {
   color: #ffc857;
-  font-size: 2.5rem;
+  font-size: 2rem;
   padding-top: 15vh;
-  margin: 0 2rem;
   font-family: "Nunito", sans-serif;
   font-weight: bold;
+  animation: reveal 4s;
+  animation: slidein2 4s;
+  display: flex;
+  justify-content: center;
+  margin: 0 2rem 0;
+}
+
+.home__text_deux {
+  color: #ffc857;
+  font-size: 2rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+  animation: reveal 4s;
+  animation: slidein3 4s;
+  padding-top: 5vh;
+  display: flex;
+  justify-content: center;
+  animation-delay: 2s;
+}
+
+@keyframes slidein3 {
+  0% {
+    margin-top: 8000px;
+  }
+  20% {
+    margin-top: 8000px;
+  }
+  35% {
+    margin-top: 0 2rem;
+  }
+  100% {
+    margin-top: 0 2rem;
+  }
+}
+
+@keyframes slidein2 {
+  0% {
+    margin-top: -8000px;
+  }
+  20% {
+    margin-top: -8000px;
+  }
+  35% {
+    margin-top: 0 2rem;
+  }
+  100% {
+    margin-top: 0 2rem;
+  }
+}
+
+@keyframes slidein {
+  0% {
+    margin-left: -8000px;
+  }
+  20% {
+    margin-left: -8000px;
+  }
+  35% {
+    margin-left: 0 2rem;
+  }
+  100% {
+    margin-left: 0 2rem;
+  }
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    width: 0px;
+  }
+  20% {
+    opacity: 1;
+    width: 0px;
+  }
+  30% {
+    width: 355px;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    width: 355px;
+  }
 }
 
 .home__buttons {
@@ -47,10 +138,4 @@ body.home {
   font-size: 1.2rem;
   margin: 0.5rem;
   font-family: "Nunito", sans-serif;
-}
-
-@media screen and (min-width: 768px) {
-  .home__buttons {
-    margin-top: 32vh;
-  }
 }
