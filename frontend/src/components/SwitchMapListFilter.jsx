@@ -23,29 +23,29 @@ export default function SwitchMapListFilter({
           type="radio"
           value="map"
           name="map"
-          id="mySwitch1"
+          id="mySwitchMap"
         />
         <NavLink className="switch__label" htmlFor="mySwitch1" to="/map">
           Carte
         </NavLink>
-        <label htmlFor="mySwitch2" className="switch__label">
+        <label htmlFor="mySwitchCarte" className="switch__label">
           <input
             className="switch__input"
             type="radio"
             value="list"
             name="map"
-            id="mySwitch2"
+            id="mySwitchCarte"
             onClick={handleListClick}
           />
           Liste
         </label>
-        <label htmlFor="mySwitch3" className="switch__label">
+        <label htmlFor="mySwitchFiltre" className="switch__label">
           <input
             className="switch__input"
             type="radio"
             value="filter"
             name="map"
-            id="mySwitch3"
+            id="mySwitchFiltre"
             onClick={handleFilterClick}
           />
           Filtre
