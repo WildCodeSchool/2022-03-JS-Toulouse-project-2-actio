@@ -1,11 +1,12 @@
 import React from "react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { Link } from "react-router-dom";
 import Icon from "./Icon";
 import "./SportCard.css";
 import distance from "./distance";
 
 export default function SportCard(props) {
-  const { title, coord, position } = props;
+  const { title, coord, position, info } = props;
 
   const displayDistance = distance(
     position.lat,
@@ -30,6 +31,9 @@ export default function SportCard(props) {
         <h1>{title}</h1>
         <p>{displayDistance} Km</p>
       </div>
+      <Link to={`/infos?id=${info}`} className="SportCard__link">
+        Plus d&apos;infos
+      </Link>
     </div>
   );
 }

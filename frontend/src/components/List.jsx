@@ -29,6 +29,7 @@ function List(props) {
                 title={sport.name}
                 coord={sport.coord}
                 position={position}
+                info={sport.key}
               />
             ))}
         </div>
