@@ -23,6 +23,7 @@
   border-radius: 1rem;
   flex-direction: column;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .quiz-return > button:hover {
@@ -43,10 +44,10 @@
   text-decoration: none;
 }
 
-
 .show-result {
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .quiz-container > h2 {
@@ -77,9 +78,7 @@
 }
 
 .quiz-result-button:hover {
-  transform: scale(1.54);
-  background: #ffc857;
-  transition: 1s ease-in-out;
+
 }
 
 .quiz-article-button:hover {
@@ -111,7 +110,21 @@
   width: 15rem;
   height: 5rem;
   border-radius: 1rem;
+  transform: scale(1.54);
+  background-color: #ffc857;
+  animation: colorChange 2.5s;
 }
+
+
+@keyframes colorChange {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: #ffc857;
+  }
+}
+
 
 .quiz-article-link {
   text-decoration: none;
@@ -131,7 +144,6 @@
   color: #ffc857;
 }
 
-
 @media screen and (min-width: 768px) {
   .answer-section > button {
     width: 50%;
@@ -146,6 +158,6 @@
     gap: 0;
   }
   .quiz-return {
-    gap: 0;
+    gap: 0.5rem;
   }
 }

@@ -13,7 +13,7 @@
 
 body.home {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://images.unsplash.com/photo-1602263515015-dd72f8e9f301?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80");
+    url(../assets/skate.jpeg);
   background-size: cover; 
   background-position: center;
   height: 100vh;

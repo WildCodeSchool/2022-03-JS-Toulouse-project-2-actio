@@ -50,6 +50,20 @@ function Quiz() {
           </button>
         ))}
       </div>
+      <div className="show-result">
+        {showResult ? (
+          <button type="button" className="quiz-result-button">
+            <NavLink
+              className="quiz-result-link"
+              to={`/QuizResult/${sportResultStringed}`}
+            >
+              Voir les activités proposées
+            </NavLink>
+          </button>
+        ) : (
+          <p />
+        )}
+      </div>
       <div className="quiz-return">
         <button
           type="button"
@@ -69,20 +83,6 @@ function Quiz() {
             <p />
           )}
         </div>
-      </div>
-      <div className="show-result">
-        {showResult ? (
-          <button type="button" className="quiz-result-button">
-            <NavLink
-              className="quiz-result-link"
-              to={`/QuizResult/${sportResultStringed}`}
-            >
-              Voir les activités proposées
-            </NavLink>
-          </button>
-        ) : (
-          <p />
-        )}
       </div>
     </div>
   );
