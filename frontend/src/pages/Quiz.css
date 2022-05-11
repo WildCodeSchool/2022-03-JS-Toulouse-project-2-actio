@@ -78,7 +78,6 @@
 }
 
 .quiz-result-button:hover {
-
 }
 
 .quiz-article-button:hover {
@@ -115,7 +114,6 @@
   animation: colorChange 2.5s;
 }
 
-
 @keyframes colorChange {
   0% {
     background-color: white;
@@ -124,7 +122,6 @@
     background-color: #ffc857;
   }
 }
-
 
 .quiz-article-link {
   text-decoration: none;

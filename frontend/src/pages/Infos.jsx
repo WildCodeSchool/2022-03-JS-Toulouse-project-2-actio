@@ -7,6 +7,10 @@ import ChangeSportPicture from "../components/ChangeSportPicture";
 import Icon from "../components/Icon";
 import "./Infos.css";
 
+import locationIcon from "../assets/location-icone.svg";
+import phoneIcon from "../assets/phone-icone.svg";
+import webIcon from "../assets/web-icone.svg";
+
 function Infos() {
   const { sportInfos } = useContext(SportContext);
   const [address, setAddress] = useState("");
@@ -35,20 +39,29 @@ function Infos() {
   const [favourite, setFavourite] = useState(false);
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/favourite-locations/${locationId}`)
+      .get(
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/api/favourite-locations/${locationId}`
+      )
       .then(() => setFavourite(true));
   }, []);
 
   const handleFavourite = () => {
     if (favourite) {
       axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/api/favourite-locations/${locationId}`
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/api/favourite-locations/${locationId}`
       );
     } else {
-      axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/favourite-locations`, {
-        locationId,
-        favourite: !favourite,
-      });
+      axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/favourite-locations`,
+        {
+          locationId,
+          favourite: !favourite,
+        }
+      );
     }
     setFavourite(!favourite);
   };
@@ -68,16 +81,13 @@ function Infos() {
 
         <div className="location-infos">
           <div className="fas location-details fa-xs">
-            <img
-              src="/src/assets/location-icone.svg"
-              alt="icone de localisation"
-            />
+            <img src={locationIcon} alt="icone de localisation" />
             <p>{address}</p>
           </div>
 
           <div className="fas phone-details fa-xs">
             <img
-              src="/src/assets/phone-icone.svg"
+              src={phoneIcon}
               alt="icone de téléphone"
               className="phone-icone"
             />
@@ -95,11 +105,7 @@ function Infos() {
           </div>
 
           <div className="fas web-icone fa-xs">
-            <img
-              src="/src/assets/web-icone.svg"
-              alt="icone de web"
-              className="web-icone"
-            />
+            <img src={webIcon} alt="icone de web" className="web-icone" />
             <p>
               {newName[0].includes("Bar") ? (
                 <a
