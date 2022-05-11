@@ -35,17 +35,17 @@ function Infos() {
   const [favourite, setFavourite] = useState(false);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/favourite-locations/${locationId}`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/favourite-locations/${locationId}`)
       .then(() => setFavourite(true));
   }, []);
 
   const handleFavourite = () => {
     if (favourite) {
       axios.delete(
-        `http://localhost:5000/api/favourite-locations/${locationId}`
+        `${import.meta.env.VITE_BACKEND_URL}/api/favourite-locations/${locationId}`
       );
     } else {
-      axios.post("http://localhost:5000/api/favourite-locations", {
+      axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/favourite-locations`, {
         locationId,
         favourite: !favourite,
       });
