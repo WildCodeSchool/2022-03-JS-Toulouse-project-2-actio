@@ -1,4 +1,4 @@
-.SportCard{
+.SportCard {
   height: 6rem;
   width: 80%;
   padding: 1rem;
@@ -6,10 +6,10 @@
   background-color: white;
   text-align: start;
   display: grid;
-grid-template-columns: repeat(4, 1fr);
-grid-template-rows: 1fr 0.3fr 0.2fr;
-grid-column-gap: 0px;
-grid-row-gap: 0px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 0.3fr 0.2fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
 .SportCard__info {
@@ -18,18 +18,18 @@ grid-row-gap: 0px;
   justify-content: space-between;
 }
 
-.SportCard h1{
+.SportCard h1 {
   font-size: 1.2rem;
   margin: none;
 }
 
-.SportCard p{
+.SportCard p {
   font-size: 1.2rem;
   margin-right: 1rem;
   text-align: end;
 }
 
-.SportCard map{
+.SportCard map {
   grid-area: 1 / 1 / 2 / 2;
 }
 .SportCard__mini-map {
@@ -40,35 +40,31 @@ grid-row-gap: 0px;
   border-radius: 1rem;
 }
 
-.SportCard .leaflet-control-container{
+.SportCard .leaflet-control-container {
   display: none;
 }
 
-.SportCard__link{
+.SportCard__link {
   grid-area: 2 / 2 / 2 / 5;
-
 }
 
-@media (max-width : 400px) {
+@media (max-width: 400px) {
   /* Styles pour cette Media Queries */
   .SportCard__mini-map {
     width: 4rem;
     height: 4rem;
   }
 
-  .SportCard h1{
+  .SportCard h1 {
     font-size: 1rem;
   }
 
-  .SportCard p{
+  .SportCard p {
     font-size: 1rem;
     margin-right: 0.5;
   }
 
-  .SportCard{
+  .SportCard {
     height: 5rem;
   }
-  
 }
-  
-  

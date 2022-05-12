@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getFavouriteLocations = (setFavouriteLocations) => {
   axios
-    .get("http://localhost:5000/api/favourite-locations")
+    .get(`${import.meta.env.VITE_BACKEND_URL}/api/favourite-locations`)
     .then((response) => {
       setFavouriteLocations(response.data);
     });
