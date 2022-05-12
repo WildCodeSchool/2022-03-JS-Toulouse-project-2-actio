@@ -1,84 +1,88 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import "./Quiz.css";
+import { NavLink, Navigate } from "react-router-dom";
+import question from "../components/question";
+import reponseOfQuiz from "../components/reponseOfQuiz";
+import QuizResult from "./QuizResult";
 
 function Quiz() {
-  const questions = [
-    {
-      questionText: "Dans quelle tranche d'âge vous situez vous ?",
-      answerOptions: [
-        { answerText: "0-20 ans ", score: 4 },
-        { answerText: "20-40 ans", score: 3 },
-        { answerText: "40-60 ans", score: 2 },
-        { answerText: "60 ans ou plus", score: 1 },
-      ],
-    },
-    {
-      questionText: "Quel est votre niveau de pratique sportive ?",
-      answerOptions: [
-        { answerText: "Plus de 3 fois par semaine", score: 4 },
-        { answerText: "Entre 1 et 3 fois par semaine", score: 3 },
-        { answerText: "Moins d'une fois par semaine", score: 2 },
-        { answerText: "Moins d'une fois par mois", score: 1 },
-      ],
-    },
-    {
-      questionText: "Vous êtes plutôt sport collectif ou sport individuel ?",
-      answerOptions: [
-        { answerText: "Sport collectif", score: 4 },
-        { answerText: "Sport individuel", score: 3 },
-        { answerText: "Autant l'un que l'autre", score: 2 },
-        { answerText: "Je n'aime pas le sport", score: 1 },
-      ],
-    },
-    {
-      questionText: "Quelle type d'activité vous plaît le plus ?",
-      answerOptions: [
-        { answerText: "Activité de glisse ", score: 4 },
-        { answerText: "Sport de balles ", score: 3 },
-        { answerText: "Activité en salle", score: 2 },
-        { answerText: "Activité contemplative", score: 1 },
-      ],
-    },
-  ];
-  const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [showScore, setShowScore] = useState(false);
-  const handleAnswerButtonClick = (answerOption) => {
+  const [showResult, setShowResult] = useState(false);
+  const [answer, setAnswer] = useState("");
+  const [tableOfResult, setTableOfResult] = useState([]);
+  const [disable, setDisable] = useState(false);
+  const [sportResultStringed, setSportResultStringed] = useState("");
+  const handleAnswerButtonClick = (event) => {
+    setAnswer(event.target.value);
+    setTableOfResult([...tableOfResult, event.target.value]);
     const nextQuestion = currentQuestion + 1;
-    setCurrentQuestion(nextQuestion);
-    if (nextQuestion < questions.length) {
+    if (nextQuestion < question.length) {
       setCurrentQuestion(nextQuestion);
-      setScore(
-        score +
-          questions[currentQuestion].answerOptions[answerOption.answerText]
-            .score
-      );
     } else {
-      setShowScore(true);
-      setCurrentQuestion(3);
+      setCurrentQuestion(currentQuestion);
+      setShowResult(true);
+      const sportResult = reponseOfQuiz([...tableOfResult, event.target.value]);
+      setDisable(true);
+      setSportResultStringed(JSON.stringify(sportResult));
     }
+  };
+
+  const handleReturnButtonCLick = () => {
+    setCurrentQuestion(0);
+    setDisable(false);
+    setTableOfResult([]);
+    setShowResult(false);
   };
 
   return (
     <div className="quiz-container">
-      <h2>{questions[currentQuestion].questionText}</h2>
+      <h2>{question[currentQuestion].questionText}</h2>
       <div className="answer-section">
-        {questions[currentQuestion].answerOptions.map((answerOption) => (
-          <button type="button" onClick={() => handleAnswerButtonClick()}>
+        {question[currentQuestion].answerOptions.map((answerOption) => (
+          <button
+            disabled={disable}
+            type="button"
+            value={answerOption.answerText}
+            onClick={(event) => handleAnswerButtonClick(event)}
+          >
             {answerOption.answerText}
           </button>
         ))}
       </div>
-      <div>{score}</div>
-
-      <div className="score">
-        {showScore ? (
-          <h2 className="score-section">
-            L&apos;activité que vous nous proposons est : ... la pétanque !!!
-          </h2>
+      <div className="show-result">
+        {showResult ? (
+          <button type="button" className="quiz-result-button">
+            <NavLink
+              className="quiz-result-link"
+              to={`/QuizResult/${sportResultStringed}`}
+            >
+              Voir les activités proposées
+            </NavLink>
+          </button>
         ) : (
-          <div />
+          <p />
         )}
+      </div>
+      <div className="quiz-return">
+        <button
+          type="button"
+          className="quiz-return-button"
+          onClick={() => handleReturnButtonCLick()}
+        >
+          Recommencer le quiz
+        </button>
+        <div className="show-result">
+          {showResult ? (
+            <button type="button" className="quiz-article-button">
+              <NavLink className="quiz-article-link" to="/News">
+                Flemme de bouger ? Lis un article !
+              </NavLink>
+            </button>
+          ) : (
+            <p />
+          )}
+        </div>
       </div>
     </div>
   );

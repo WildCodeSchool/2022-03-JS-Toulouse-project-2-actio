@@ -1,5 +1,5 @@
 body {
-  margin: 0 0 55px 0;
+  margin: 0 0 0 0;
 }
 
 .nav {
@@ -10,10 +10,15 @@ body {
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-  background-color: #fbfbfb;
+  background-color: #ffc857;
   display: flex;
   overflow-x: auto;
-  z-index: 1000;
+  z-index: 2;
+}
+
+.nav__text {
+  text-decoration: none;
+  color: black;
 }
 
 .nav__link {

@@ -1,71 +1,148 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useSearchParams } from "react-router-dom";
+import axios from "axios";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { SportContext } from "../contexts/SportContext";
+import ChangeSportPicture from "../components/ChangeSportPicture";
+import Icon from "../components/Icon";
 import "./Infos.css";
-import { MapContainer, TileLayer } from "react-leaflet";
+
+import locationIcon from "../assets/location-icone.svg";
+import phoneIcon from "../assets/phone-icone.svg";
+import webIcon from "../assets/web-icone.svg";
 
 function Infos() {
-  const props = {
-    locationName: "PATINOIRE BELLEVUE",
-    address: "69ter route de Narbonne 31000 TOULOUSE",
-    phone: "05 61 52 93 53",
-    location: "",
+  const { sportInfos } = useContext(SportContext);
+  const [address, setAddress] = useState("");
+  const [searchParams] = useSearchParams();
+  const locationId = searchParams.get("id");
+  const [sport] = useState(sportInfos.find((el) => el.key === locationId));
+
+  let newName = "";
+
+  if (sport.name.includes("|")) {
+    newName = sport.name.split("|");
+  } else {
+    newName = [sport.name];
+  }
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api-adresse.data.gouv.fr/reverse/?lon=${sport.coord[1]}&lat=${sport.coord[0]}`
+      )
+      .then((response) => {
+        setAddress(response.data.features[0].properties.label);
+      });
+  }, []);
+
+  const [favourite, setFavourite] = useState(false);
+  useEffect(() => {
+    axios
+      .get(
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/api/favourite-locations/${locationId}`
+      )
+      .then(() => setFavourite(true));
+  }, []);
+
+  const handleFavourite = () => {
+    if (favourite) {
+      axios.delete(
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/api/favourite-locations/${locationId}`
+      );
+    } else {
+      axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/favourite-locations`,
+        {
+          locationId,
+          favourite: !favourite,
+        }
+      );
+    }
+    setFavourite(!favourite);
   };
 
   return (
     <div className="Infos">
-      <img
-        src="/src/assets/patinoire.jpeg"
-        alt="patinoire"
-        className="chosenSport-picture"
-      />
-
-      <div className="location-name">
-        <h1 className="name">
-          <strong>{props.locationName}</strong>
-        </h1>
-        <p className="description">Infrastructures de sports et loisirs</p>
+      <div className="chosenSport-picture">
+        {ChangeSportPicture(sport.sport)}
       </div>
 
-      <div className="location-infos">
-        <div className="location-details">
-          <img
-            src="/src/assets/location-icone.svg"
-            alt="icone de localisation"
-          />
-          <p>{props.address}</p>
+      <div className="desktop-right">
+        <div className="location-name">
+          <h2 className="name">
+            <strong>{newName[0]}</strong>
+          </h2>
         </div>
 
-        <div className="phone-details">
-          <img
-            src="/src/assets/phone-icone.svg"
-            alt="icone de téléphone"
-            className="phone-icone"
-          />
-          <p>{props.phone}</p>
+        <div className="location-infos">
+          <div className="fas location-details fa-xs">
+            <img src={locationIcon} alt="icone de localisation" />
+            <p>{address}</p>
+          </div>
+
+          <div className="fas phone-details fa-xs">
+            <img
+              src={phoneIcon}
+              alt="icone de téléphone"
+              className="phone-icone"
+            />
+            <p>
+              {newName[0].includes("Bar") ? (
+                <a href="tel:05.61.22.22.22" className="phone-link">
+                  05.61.22.22.22
+                </a>
+              ) : (
+                <a href="tel:05.61.22.32.64" className="phone-link">
+                  05.61.22.32.64
+                </a>
+              )}
+            </p>
+          </div>
+
+          <div className="fas web-icone fa-xs">
+            <img src={webIcon} alt="icone de web" className="web-icone" />
+            <p>
+              {newName[0].includes("Bar") ? (
+                <a
+                  href="https://www.pagesjaunes.fr/annuaire/toulouse-31/bar"
+                  className="mail-link"
+                >
+                  https://www.pagesjaunes.fr/annuaire/toulouse-31/bar
+                </a>
+              ) : (
+                <a
+                  href="mailto:point.accueil.inscriptions@mairie-toulouse.fr"
+                  className="mail-link"
+                >
+                  point.accueil.inscriptions@mairie-toulouse.fr
+                </a>
+              )}
+            </p>
+          </div>
         </div>
 
-        <div className="fas web-icone fa-xs">
-          <img
-            src="/src/assets/web-icone.svg"
-            alt="icone de web"
-            className="web-icone"
-          />
-          <p>non disponible</p>
+        <div className="map">
+          <MapContainer center={sport.coord} zoom={15}>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              className="map-tiles"
+            />
+            <button
+              className="btn-favourite"
+              onClick={handleFavourite}
+              type="submit"
+            >
+              {favourite ? "♥" : "♡"}
+            </button>
+            <Marker position={sport.coord} icon={Icon} />
+          </MapContainer>
         </div>
-      </div>
-
-      <div className="map">
-        <MapContainer center={[43.604652, 1.444209]} zoom={13}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            className="map-tiles"
-          />
-        </MapContainer>
-      </div>
-
-      <div className="exit-acess">
-        <a href="/">Retour au quiz</a>
-        <a href="/">Retour à la carte</a>
       </div>
     </div>
   );

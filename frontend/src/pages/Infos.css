@@ -1,8 +1,34 @@
+/* Create a variable map-tiles-filter */
+:root {
+  --map-tiles-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg)
+    saturate(0.3) brightness(0.5);
+}
+
+/* Style the class map-tiles wwith a filter set to the variable map-tiles-filter */
+.Infos .map-tiles {
+  filter: var(--map-tiles-filter, none);
+}
+
+body,
+html,
+#root,
+.App {
+  height: 100%;
+}
+
 .Infos {
-  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #1a1a1d;
+  font-family: "Nunito", sans-serif;
+  height: 100%;
+  width: 100%;
 }
 
 .Infos .chosenSport-picture {
+  background-image: center;
+  background-size: cover;
   width: 100%;
 }
 
@@ -17,51 +43,110 @@
 .Infos .name {
   font-size: 1.8rem;
   display: flex;
-  margin-top: 0.6rem 0 0 0;
-}
-
-.Infos .description {
-  display: flex;
-  margin: 0 0 2.5rem 0;
+  margin-top: 0.6rem;
 }
 
 .Infos .location-infos {
-  font-size: 0.8em;
+  font-size: 1rem;
   margin: 0 2rem;
   color: #ffc857;
   display: flex;
   flex-direction: column;
 }
 
-.Infos .location-details {
-  display: flex;
-  text-align: initial;
-  align-items: center;
-  gap: 1rem;
+.phone-link {
+  color: #ffc857;
+  text-decoration: none;
 }
 
-.Infos .phone-details {
+.mail-link {
   color: #ffc857;
-  display: flex;
-  gap: 1rem;
-}
-
-.Infos .web-icone {
-  color: #ffc857;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  text-decoration: none;
 }
 
 .Infos .leaflet-container {
-  margin: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 75px;
   height: 140px;
+  z-index: 1;
 }
 
-.Infos .exit-acess {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  text-decoration: none;
-  color: #ffc857;
+.btn-favourite {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  width: 1rem;
+  height: 1rem;
+  color: red;
+  font-size: 2rem;
+  top: 0px;
+  right: 20px;
+  z-index: 400;
+  cursor: pointer;
+}
+
+.btn-favourite:hover {
+  background-color: transparent;
+}
+/*----------- media queries desktop ------------ */
+
+@media screen and (min-width: 740px) {
+  .Infos {
+    background-color: #1a1a1d;
+    font-family: "Nunito", sans-serif;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+
+  .Infos .chosenSport-picture {
+    display: flex;
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .Infos .desktop-right {
+    background-color: #1a1a1d;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-position: right;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .Infos .location-infos {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+
+  .Infos .location-name {
+    margin: 0 2rem;
+    color: #ffc857;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+
+  .Infos .name {
+    font-size: 3rem;
+    margin-top: 3rem;
+  }
+
+  .Infos .map {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 6rem 0;
+  }
+
+  .Infos .leaflet-container {
+    display: flex;
+    margin: 2rem;
+    width: 60%;
+    height: 20vh;
+  }
 }

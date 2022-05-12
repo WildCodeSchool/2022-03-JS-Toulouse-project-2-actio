@@ -1,107 +1,73 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useParams, Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import axios from "axios";
+import { AnimatePresence } from "framer-motion";
+import { SportContext } from "../contexts/SportContext";
+import LocationMarker from "../components/LocationMarker";
+import SwitchMapListFilter from "../components/SwitchMapListFilter";
 import FilterMenu from "../components/FilterMenu";
+import distance from "../components/distance";
+import List from "../components/List";
+import getFavouriteLocations from "../components/getFavouriteLocations";
 import Icon from "../components/Icon";
 import "./Map.css";
 
 function Map() {
-  const [sportSelected, setSportSelected] = useState("");
-  const [sportLocations, setSportLocations] = useState([]);
+  const { sportsSelected, setSportsSelected, sportInfos } =
+    useContext(SportContext);
 
-  const getLocation = () => {
-    switch (sportSelected) {
-      case "tennis":
-        axios
-          .get(
-            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=courts-de-tennis&q=&rows=50"
-          )
-          .then((response) => setSportLocations(response.data.records));
-        break;
-      case "patinage":
-        axios
-          .get(
-            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=patinoires&q="
-          )
-          .then((response) => setSportLocations(response.data.records));
-        break;
-      case "skate":
-        axios
-          .get(
-            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=skate-parcs&q="
-          )
-          .then((response) => setSportLocations(response.data.records));
-        break;
-      case "natation":
-        axios
-          .get(
-            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=piscines&q=&rows=20"
-          )
-          .then((response) => setSportLocations(response.data.records));
-        break;
-      case "petanque":
-        axios
-          .get(
-            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=boulodromes&q=&rows=100"
-          )
-          .then((response) => setSportLocations(response.data.records));
-        break;
-      case "fitness":
-        axios
-          .get(
-            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=site-communal-dimplantation-de-fitness&q=&rows=50"
-          )
-          .then((response) => setSportLocations(response.data.records));
-        break;
-      case "football":
-        axios
-          .get(
-            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=stades&q=&rows=50"
-          )
-          .then((response) =>
-            setSportLocations(
-              response.data.records.filter(
-                (location) => location.fields.foot === "O"
-              )
-            )
-          );
-        break;
-      case "rugby":
-        axios
-          .get(
-            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=stades&q=&rows=50"
-          )
-          .then((response) =>
-            setSportLocations(
-              response.data.records.filter(
-                (location) => location.fields.rugby === "O"
-              )
-            )
-          );
-        break;
-      case "volley-ball":
-      case "handball":
-        axios
-          .get(
-            "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=gymnases&q=&rows=50"
-          )
-          .then((response) => setSportLocations(response.data.records));
-        break;
-      default:
-        setSportLocations([
-          { fields: { geo_point_2d: [43.604652, 1.444209] }, recordid: "1" },
-        ]);
-        break;
-    }
-  };
+  // position corresponds to the coordinates of the user. We initialize it with the coordinates of Toulouse
+  const [position, setPosition] = useState({ lat: 43.604652, lng: 1.444209 });
+  // if we get a sport as an url param we set this sport to the sport selected
+  const { sport } = useParams();
 
   useEffect(() => {
-    getLocation();
-  }, [sportSelected]);
+    if (sport) {
+      setSportsSelected([sport]);
+    }
+  }, []);
+
+  const [favouriteLocations, setFavouriteLocations] = useState([]);
+  useEffect(() => {
+    getFavouriteLocations(setFavouriteLocations);
+  }, []);
+  const idFavouriteLocations = favouriteLocations.map(
+    (favouriteLocation) => favouriteLocation.location_id
+  );
+
+  // Define a value for the slider, by default set to 2 km
+  const [value, setValue] = useState(5);
+
+  // Set a radius to display markers within this radius in kilometers
+  const radius = value;
+
+  // We create a state to display or not the FilterMenu component
+  const [showFilter, setShowFilter] = useState(false);
+
+  // We create a state to display or not the List component
+  const [showList, setShowList] = useState(false);
 
   return (
     <div className="Map">
-      <FilterMenu setSportSelected={setSportSelected} />
+      <h1 className="brand-title">Actio</h1>
+      <SwitchMapListFilter
+        showFilter={showFilter}
+        setShowFilter={setShowFilter}
+        showList={showList}
+        setShowList={setShowList}
+      />
+      {/* the tag AnimatePresence is to animate the FilterMenu component when it is unmounted thanks to the library framer-motion */}
+      <AnimatePresence>
+        {showFilter ? (
+          <FilterMenu
+            setSportsSelected={setSportsSelected}
+            sportsSelected={sportsSelected}
+            value={value}
+            setValue={setValue}
+          />
+        ) : null}
+        {showList ? <List sports={sportInfos} position={position} /> : null}
+      </AnimatePresence>
       <MapContainer center={[43.604652, 1.444209]} zoom={13}>
         {/* Add the className map-tiles to style the map in dark */}
         <TileLayer
@@ -109,19 +75,36 @@ function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           className="map-tiles"
         />
+
         {/* Once we get the different locations from the API display marker on the map */}
-        {sportLocations.map((location) => (
-          <Marker
-            key={location.recordid}
-            position={location.fields.geo_point_2d}
-            icon={Icon}
-          >
-            <Popup>
-              {location.fields.telephone} | {location.fields.nom_complet} |{" "}
-              {location.fields.adresse}
-            </Popup>
-          </Marker>
-        ))}
+        {sportInfos
+          .filter(
+            (sportInfo) =>
+              distance(
+                position.lat,
+                position.lng,
+                sportInfo.coord[0],
+                sportInfo.coord[1]
+              ) <= radius
+          )
+          .map((sportInfo) => (
+            <Marker key={sportInfo.key} position={sportInfo.coord} icon={Icon}>
+              <Popup>
+                {sportInfo.name} {" | "}
+                <Link to={`/infos?id=${sportInfo.key}`}>Plus d&apos;infos</Link>
+                {idFavouriteLocations.includes(sportInfo.key) ? (
+                  <>
+                    {" "}
+                    |{" "}
+                    <span style={{ color: "red", fontSize: "1rem" }}>
+                      &hearts;
+                    </span>
+                  </>
+                ) : null}
+              </Popup>
+            </Marker>
+          ))}
+        <LocationMarker position={position} setPosition={setPosition} />
       </MapContainer>
     </div>
   );

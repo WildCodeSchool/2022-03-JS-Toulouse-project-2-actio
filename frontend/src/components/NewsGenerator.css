@@ -1,0 +1,21 @@
+.news {
+  display: flex;
+  flex-direction: column;
+  color: #ffc857;
+  margin: 1rem;
+  margin-top: 5rem;
+  border: solid;
+}
+
+.news > a {
+  color: #ffc857;
+}
+
+@media screen and (min-width: 740px) {
+  .news {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15rem;
+  }
+}
